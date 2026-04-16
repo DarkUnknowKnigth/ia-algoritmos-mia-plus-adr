@@ -1,0 +1,15 @@
+ID,Fecha,Hora,Vehiculos_Contados,Velocidad_Promedio,Clima,Estado_Sensor
+1,2023-10-01,08:00,450,35.5,Despejado,Operativo
+2,2023-10-01,09:00,380,40.2,Despejado,Operativo
+3,2023-10-01,10:00,310,45.0,Lluvia,Operativo
+4,2023-10-01,11:00,290,48.5,Lluvia,Mantenimiento
+5,2023-10-01,12:00,320,42.1,Despejado,Operativo
+6,2023-10-01,13:00,5000,38.9,Despejado,Operativo
+7,2023-10-01,14:00,410,,Nublado,Operativo
+8,2023-10-01,15:00,390,41.2,Nublado,Operativo
+9,2023-10-01,16:00,450,30.5,Lluvia,Operativo
+10,2023-10-01,17:00,600,20.1,Lluvia,Operativo
+11,2023-10-01,18:00,650,15.4,Lluvia,Operativo
+12,2023-10-01,19:00,580,22.8,Despejado,Operativo
+13,2023-10-01,20:00,400,35.0,Despejado,Error
+14,2023-10-01,21:00,300,45.2,
