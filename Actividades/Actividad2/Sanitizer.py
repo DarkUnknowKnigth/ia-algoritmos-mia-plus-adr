@@ -58,7 +58,7 @@ class Sanitizer:
         return self.data
     def shaper( self, key_id: str,  key_label: str, feature_keys: list[str] = [], metadata_keys: list[str] = []):
         """
-        Convertir a una estructura que sigue las buenas practicas
+        Convertir a una estructura que sigue las buenas practicas {id, label, features, metadata}
         """
         dataset = []
         for row in self.data:
