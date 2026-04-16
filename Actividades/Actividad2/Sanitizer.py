@@ -69,4 +69,6 @@ class Sanitizer:
                 "metadata": {key: row[key] for key in metadata_keys}
             })
         return dataset
+    def validations(self):
+        return None
 

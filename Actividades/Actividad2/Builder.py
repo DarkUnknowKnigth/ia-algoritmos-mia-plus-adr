@@ -23,7 +23,8 @@ class Builder:
                     flag_valid -=1
             if flag_valid == 2:
                 validated_samples.append(sample)
-        self.samples = validated_samples
+        self.samples = validated_samples     
+
     def build_dataset(self):
         labels = [sample["label"] for sample in self.samples]
         unique_labels = sorted(set(labels))
@@ -73,7 +74,7 @@ class Builder:
                 "y": y[train_idx],
                 "ids": [ids[i] for i in train_idx]
             },
-            "val": {
+            "validation": {
                 "x": x[val_idx],
                 "y": y[val_idx],
                 "ids": [ids[i] for i in val_idx]

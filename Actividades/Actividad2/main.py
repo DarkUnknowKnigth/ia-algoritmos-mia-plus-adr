@@ -50,11 +50,15 @@ if __name__ == "__main__":
         samples = sanitizer.shaper('ID','Peligo_colision', ['Vehiculos_Contados','Velocidad_Promedio'], [ 'Fecha', 'Hora','Clima','Estado_Sensor'])
         # Primer elemento del samples para ver el procesamiento
         print(samples[0])
+        # Crear el dataset
         builder = Builder(samples)
+        # Descartar valores con inconsistencias
         builder.evaluate_quality()
+        # guardar el dataset
         dataset = builder.build_dataset()
         for key, value in dataset.items():
             print(f"{key}: {value}")
+        #separar en entrenamiento, validacion y pruebas
         trainer = builder.split_dataset()
         for key, value in trainer.items():
             print(f"{key}: {value}")
