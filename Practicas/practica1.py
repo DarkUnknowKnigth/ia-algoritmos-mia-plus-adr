@@ -332,13 +332,14 @@ print("aleatoreo Validation IDs: ",splits['validation']['ids'],"\n\n============
 print("aleatoreo Test IDs: ",splits['test']['ids'],"\n\n===============+++++===============\n")
 #actividad1_minombre.zip
 
+#construir un dicionario donde el id sea la key y los datos el value
 def build_id_index(samples):
     return {sample["id"]: sample for sample in samples}
 # construir catalogo de indexes
 id_index = build_id_index(samples)
 print("consulta rapida por id ","\n\n===============+++++===============\n")
 print(id_index["sample_001"],"\n\n===============+++++===============\n")
-
+#buscar caracteristicas duplicadas
 def find_duplicate_features(samples):
     seen = {}
     duplicados = [] 
