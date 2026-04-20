@@ -100,3 +100,7 @@ print("X dtype: ", X.dtype)
 print("y: ", y)
 print("y shape: ", y.shape)
 print("y dtype: ", y.dtype)
+
+#Seleccion de la primera muestra
+#Seleccion de un columna
+#Operaciones elemento a elemento
