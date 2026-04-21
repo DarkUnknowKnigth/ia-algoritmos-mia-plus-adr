@@ -61,7 +61,10 @@ if __name__ == "__main__":
         new_sample = {'id': 'tra_201', 'label': 'critical', 'features': [849.24, 20, 66.87, 178.8], 'metadata': {'fecha_medicion': '2026-04-14', 'vehiculos_hora': 849.24, 'crucero': 'cruce_c', 'zona': 'oriente', 'calidad_medicion': 'alta', 'observacion': 'que calor hace'}}
         samples  = sanitizer.add_sample(new_sample, features_length)
         print(20*"==","Agregada Actual > ",len(samples), 20*"==","\n")
-        
+        # reportar casos con inconsistencia
+        print(20*"==","Descartes en sanitizacion",len(sanitizer.trash), 20*"==","\n")
+        print(20*"==","Duplicidad en sanitizacion",len(sanitizer.duplicated_keys), 20*"==","\n")
+
         # Crear el dataset
         builder = Builder(samples)
         # Descartar valores con inconsistencias
@@ -74,6 +77,14 @@ if __name__ == "__main__":
         builder.normalize_metadata('calidad_medicion')
         # guardar el dataset
         dataset = builder.build_dataset()
+        #reporte de datos que no me sirver deacuerdo a mis criterios
+        print(20*"==","Descartes en construccion",len(builder.trash), 20*"==","\n")
+        if len(builder.trash) > 0:
+            print(20*"==","Descartes en ejemplo: ", 20*"==","\n")
+            print(builder.trash[np.random.randint(0,len(builder.trash))])
+        print(20*"==","Duplicidad en construccion",len(builder.duplicated), 20*"==","\n")
+
+
         #for key, value in dataset.items():
         #    print(f"{key}: {value}")
         #separar en entrenamiento, validacion y pruebas

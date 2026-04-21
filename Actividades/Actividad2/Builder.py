@@ -5,6 +5,8 @@ class Builder:
     Clase encargada de la construcción y partición de datasets procesados.
     """
     samples = []
+    trash = []
+    duplicated = []
     dataset = {}
     def __init__(self,samples):
         """
@@ -32,6 +34,8 @@ class Builder:
                     flag_valid -=1
             if flag_valid == 2:
                 validated_samples.append(sample)
+            else:
+                self.trash.append(sample)
         self.samples = validated_samples     
     def avoid_duplicity(self):
         """
@@ -49,7 +53,8 @@ class Builder:
                 seen_ids.add(sample_id)
                 seen_features.add(feature_tuple)
                 unique_samples.append(sample)
-        
+            else:
+                self.duplicated.append(sample)
         self.samples = unique_samples
         
     def build_dataset(self):

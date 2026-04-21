@@ -2,6 +2,8 @@
 class Sanitizer:
     data = []
     samples = []
+    trash = []
+    duplicated_keys = []
     def __init__(self, data):
         """
         Inicializa la clase con una lista de diccionarios (datos de CSV).
@@ -22,7 +24,8 @@ class Sanitizer:
             # Filtrar filas que estén completamente vacías
             if any(new_row.values()):
                 cleaned_data.append(new_row)
-        
+            else:
+                self.trash.append(new_row)
         self.data = cleaned_data
         return self.data
 
@@ -35,10 +38,12 @@ class Sanitizer:
             seen = set()
             unique_data = []
             for row in self.data:
-                val = row.get(key)
+                val = row[key]
                 if val not in seen:
                     seen.add(val)
                     unique_data.append(row)
+                else:
+                    self.duplicated_keys.append(row)
             self.data = unique_data
         else:
             self.data = [dict(t) for t in {tuple(d.items()) for d in self.data}]
@@ -82,4 +87,17 @@ class Sanitizer:
             raise ValueError("El ID ya existe en el conjunto de datos")    
         self.samples.append(new_sample)
         return self.samples
-        
+    #componer las cadenas que tienen numero y comas 
+    def parse_numero(cadena):
+        has_coma = ',' in cadena
+        if has_coma:
+            try:
+                value = float(cadena.replace(',', '.'))
+            except ValueError:
+                value = None
+        try:
+            value = float(cadena)
+        except ValueError:
+            value = None
+        return value
+    
