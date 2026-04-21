@@ -60,15 +60,12 @@ class Sanitizer:
         """
         Convertir a una estructura que sigue las buenas practicas {id, label, features, metadata}
         """
-        dataset = []
+        samples = []
         for row in self.data:
-            dataset.append({
+            samples.append({
                 "id": row[key_id],
                 "label": row[key_label],
                 "features": [row[key] for key in feature_keys],
                 "metadata": {key: row[key] for key in metadata_keys}
             })
-        return dataset
-    def validations(self):
-        return None
-
+        return samples

@@ -18,14 +18,44 @@ class Builder:
         validated_samples = []
         for sample in self.samples:
             flag_valid = 2
+            #asegurandonos que las clases sean texto valido
+            if sample["label"] == None or sample["label"] == '':
+                flag_valid -=1
+            #asegurandonos que los ids existan y no esten vacios
+            if sample["id"] == None or sample["id"] == '':
+                flag_valid -=1
             for feature in sample["features"]:
                 if not isinstance(feature, (int, float)):
+                    flag_valid -=1
+                #valido que las features tengan algo que sea validao como numeros mayores a cero y no cadenas vacias
+                if feature != None and feature != '' and float(feature) < 0:
                     flag_valid -=1
             if flag_valid == 2:
                 validated_samples.append(sample)
         self.samples = validated_samples     
+    def avoid_duplicity(self):
+        """
+        Elimina muestras duplicadas basándose en su ID y en la combinación de sus características.
+        """
+        seen_ids = set()
+        seen_features = set()
+        unique_samples = []
 
+        for sample in self.samples:
+            sample_id = sample["id"]
+            feature_tuple = tuple(sample["features"])
+
+            if sample_id not in seen_ids and feature_tuple not in seen_features:
+                seen_ids.add(sample_id)
+                seen_features.add(feature_tuple)
+                unique_samples.append(sample)
+        
+        self.samples = unique_samples
+        
     def build_dataset(self):
+        """
+            Construir todo lo necesario para que el dataset siga lo visto en clase
+        """
         labels = [sample["label"] for sample in self.samples]
         unique_labels = sorted(set(labels))
         class_to_index = {label: idx for idx, label in enumerate(unique_labels)}
@@ -85,3 +115,27 @@ class Builder:
                 "ids": [ids[i] for i in test_idx]
             }
         }
+    def normalize_labels(self):
+        translator = {'warn':'warning','critico':'critical'}
+        tuned_data = []
+        for sample in self.samples:
+            if sample['label'] in translator:
+                normalized_label = translator.get(sample['label'])
+                sample['label'] = normalized_label
+                tuned_data.append(sample)
+            else:
+                tuned_data.append(sample)
+        self.samples = tuned_data
+    def normalize_metadata(self, key):
+        translator = {}
+        tuned_data = []
+        if key == 'calidad_medicion':
+            translator = {'alta':'high','media':'medium','baja':'low'}
+        for sample in self.samples:
+            if sample['metadata'][key] in translator:
+                normalized_metadata = translator.get(sample['metadata'][key])
+                sample['metadata'][key] = normalized_metadata
+                tuned_data.append(sample)
+            else:
+                tuned_data.append(sample)
+        self.samples = tuned_data
