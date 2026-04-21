@@ -102,5 +102,9 @@ print("y shape: ", y.shape)
 print("y dtype: ", y.dtype)
 
 #Seleccion de la primera muestra
+print("primera muestra: ", X[0])
 #Seleccion de un columna
+print("Primera columna: ", X[0][0])
 #Operaciones elemento a elemento
+xx = np.dot(x,x)
+print("xy: ", xx)
