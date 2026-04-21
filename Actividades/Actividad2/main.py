@@ -53,7 +53,15 @@ if __name__ == "__main__":
 
         # Primer elemento del samples para ver el procesamiento
         print(20*"==","Explorando muestras estructuradas", 20*"==","\n")
-        print(samples[0])
+        first_sample = samples[0]
+        print(first_sample)
+        features_length = len(first_sample['features'])
+        print(20*"==","Agregando muestra estructurada Actual > ",len(samples), 20*"==","\n")
+
+        new_sample = {'id': 'tra_201', 'label': 'critical', 'features': [849.24, 20, 66.87, 178.8], 'metadata': {'fecha_medicion': '2026-04-14', 'vehiculos_hora': 849.24, 'crucero': 'cruce_c', 'zona': 'oriente', 'calidad_medicion': 'alta', 'observacion': 'que calor hace'}}
+        samples  = sanitizer.add_sample(new_sample, features_length)
+        print(20*"==","Agregada Actual > ",len(samples), 20*"==","\n")
+        
         # Crear el dataset
         builder = Builder(samples)
         # Descartar valores con inconsistencias

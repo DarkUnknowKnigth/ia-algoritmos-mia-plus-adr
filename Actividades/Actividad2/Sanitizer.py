@@ -1,6 +1,7 @@
 #crear una clase Sanitizar para tratar un list de datos csv
 class Sanitizer:
     data = []
+    samples = []
     def __init__(self, data):
         """
         Inicializa la clase con una lista de diccionarios (datos de CSV).
@@ -68,4 +69,17 @@ class Sanitizer:
                 "features": [row[key] for key in feature_keys],
                 "metadata": {key: row[key] for key in metadata_keys}
             })
+        self.samples = samples
         return samples
+    def add_sample(self, new_sample, expected_feature_length):
+        required_keys = {"id", "label", "features", "metadata"}
+        if not required_keys.issubset(new_sample.keys()):
+            raise ValueError(f"La muestra debe contener las llaves: {required_keys}")
+        if len(new_sample["features"]) != expected_feature_length:
+            raise ValueError(f"Longitud de características incorrecta. Se esperaba {expected_feature_length}")
+        existing_ids = {s["id"] for s in self.samples if isinstance(s, dict) and "id" in s}
+        if new_sample["id"] in existing_ids:
+            raise ValueError("El ID ya existe en el conjunto de datos")    
+        self.samples.append(new_sample)
+        return self.samples
+        

@@ -8,7 +8,7 @@ class Builder:
     dataset = {}
     def __init__(self,samples):
         """
-        Reconstruye la estructura del dataset a partir de una lista de muestras.
+        Inicializar los datos.
         """
         self.samples = samples
     def evaluate_quality(self):
