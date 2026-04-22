@@ -60,6 +60,7 @@ class Sanitizer:
                     try:
                         row[col] = func(row[col])
                     except ValueError:
+                        
                         row[col] = None
         return self.data
     def shaper( self, key_id: str,  key_label: str, feature_keys: list[str] = [], metadata_keys: list[str] = []):
@@ -88,16 +89,17 @@ class Sanitizer:
         self.samples.append(new_sample)
         return self.samples
     #componer las cadenas que tienen numero y comas 
-    def parse_numero(cadena):
-        has_coma = ',' in cadena
-        if has_coma:
+    def parse_number(self,x):
+        has_comma = ',' in x
+        if has_comma:
             try:
-                value = float(cadena.replace(',', '.'))
+                value = float(x.replace(',', '.'))
             except ValueError:
                 value = None
-        try:
-            value = float(cadena)
-        except ValueError:
-            value = None
+        else:
+            try:
+                value = float(x)
+            except ValueError:
+                value = None
         return value
     

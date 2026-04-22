@@ -13,6 +13,12 @@ class Builder:
         Inicializar los datos.
         """
         self.samples = samples
+    def validation_features_len(self,samples):
+        #sacamos las longitudes y poner en array
+        longitudes = [ len(sample["features"]) for sample in samples]
+        # validar y retornar tupla [validacion, longitudes]
+        return len(set(longitudes)) == 1, longitudes
+
     def evaluate_quality(self):
         """
         Validar si los features son numericos y estan presentes
@@ -69,7 +75,11 @@ class Builder:
         y = np.array([class_to_index[sample["label"]] for sample in self.samples], dtype=np.int64)
         ids = [sample["id"] for sample in self.samples]
         metadata = [sample["metadata"] for sample in self.samples]
-        
+        # checar que las dimensiones de las caracteristicas sean homogeneas
+        validation_feature_len, feature_lens = self.validation_features_len(self.samples)
+        if not validation_feature_len:
+            print('💀 Longitud invalida en features')
+            return None
         self.dataset = {
             "x": x,
             "y": y,

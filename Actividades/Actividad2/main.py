@@ -5,6 +5,9 @@
 #Actividad 2
 import csv
 import sys
+import json
+import numpy as np
+from Export import *
 from Sanitizer import *
 from Builder import *
 from Query import *
@@ -44,7 +47,7 @@ if __name__ == "__main__":
         sanitizer = Sanitizer(contenido)
         sanitizer.clean_data()
         sanitizer.remove_duplicates()
-        sanitizer.format_columns({id_string:str,'vehiculos_hora':float,'velocidad_promedio_kmh':float,'densidad_vehicular':float,'tiempo_espera_s':float})
+        sanitizer.format_columns({id_string:str,'vehiculos_hora':sanitizer.parse_number,'velocidad_promedio_kmh':sanitizer.parse_number,'densidad_vehicular':sanitizer.parse_number,'tiempo_espera_s':sanitizer.parse_number})
         data = sanitizer.data
         # Exploarcion
         print(20*"==","Explorando muestras crudas", 20*"==","\n")
@@ -83,7 +86,11 @@ if __name__ == "__main__":
             print(20*"==","Descartes en ejemplo: ", 20*"==","\n")
             print(builder.trash[np.random.randint(0,len(builder.trash))])
         print(20*"==","Duplicidad en construccion",len(builder.duplicated), 20*"==","\n")
+        # exportar el dataset a un .json 
 
+        with open('dataset_procesado.json', 'w', encoding='utf-8') as f:
+            json.dump(dataset, f, ensure_ascii=False, indent=4, cls=ExportJSON)
+        print(20*"==","Dataset exportado a dataset_procesado.json", 20*"==","\n")
 
         #for key, value in dataset.items():
         #    print(f"{key}: {value}")
