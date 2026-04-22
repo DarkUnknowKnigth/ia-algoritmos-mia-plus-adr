@@ -125,7 +125,7 @@ if __name__ == "__main__":
         print(query.get_by_id('tra_099'))
         # filtrar por label
         query_by_label = query.filter_by_label('warning')
-        print(20*"==","Comprobacion del filtro metadatos", 20*"==","\n")
+        print(20*"==","Comprobacion del filtro label", 20*"==","\n")
         print("Unica etiqueta: ",set([ s['label'] for s in query_by_label ]), "\n")
         print(query_by_label[np.random.randint(0,len(query_by_label))])
         # print(query_by_label)

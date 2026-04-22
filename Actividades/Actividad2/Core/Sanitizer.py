@@ -90,7 +90,7 @@ class Sanitizer:
             })
         self.samples = samples
         return samples
-    def add_sample(self, new_sample, expected_feature_length) -> List[SampleInterface]:
+    def add_sample(self, new_sample: SampleInterface, expected_feature_length) -> List[SampleInterface]:
         required_keys = {"id", "label", "features", "metadata"}
         if not required_keys.issubset(new_sample.keys()):
             raise ValueError(f"La muestra debe contener las llaves: {required_keys}")
