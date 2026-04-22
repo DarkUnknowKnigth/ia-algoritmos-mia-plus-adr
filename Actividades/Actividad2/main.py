@@ -7,10 +7,10 @@ import csv
 import sys
 import json
 import numpy as np
-from Export import *
-from Sanitizer import *
-from Builder import *
-from Query import *
+from Core.Export import *
+from Core.Sanitizer import *
+from Core.Builder import *
+from Core.Query import *
 
 #leer un csv y cargarlo en memoria
 
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     else:
         print("Uso: python main.py <ruta_del_archivo_csv>")
         print("Usando ruta de ejemplo...")
-        ruta_archivo = './dataset_sucio_trafico_urbano_200_muestras.csv'
+        ruta_archivo = './Datasets/dataset_sucio_trafico_urbano_200_muestras.csv'
         
     # Ejemplo de uso
     contenido = load_csv(ruta_archivo)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             print(builder.trash[np.random.randint(0,len(builder.trash))])
         print(20*"==","Duplicidad en construccion",len(builder.duplicated), 20*"==","\n")
         # exportar el dataset a un .json 
-        export_to_json(dataset, 'dataset_procesado.json')
+        export_to_json(dataset, './Exports/dataset_procesado.json')
 
         print(20*"==","Resumen de dataset", 20*"==","\n")
         for key, value in dataset.items():
@@ -98,7 +98,7 @@ if __name__ == "__main__":
         #separar en entrenamiento, validacion y pruebas
         trainer = builder.split_dataset()
         for key in trainer.keys():
-            export_to_json(trainer[key],'dataset_procesado_' + key + '.json')
+            export_to_json(trainer[key],'./Exports/dataset_procesado_' + key + '.json')
 
         print(20*"==","Resumen de division (train, validation,test)", 20*"==","\n")
         for key, value in trainer.items():

@@ -1,5 +1,5 @@
 import numpy as np
-from Builder import DatasetInterface
+from Core.Builder import DatasetInterface
 
 class Query:
     """

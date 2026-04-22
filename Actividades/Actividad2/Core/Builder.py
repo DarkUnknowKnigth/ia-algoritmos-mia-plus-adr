@@ -1,6 +1,6 @@
 import numpy as np
 from typing import TypedDict, List, Dict, Any
-from Sanitizer import SampleInterface
+from Core.Sanitizer import SampleInterface
 
 class DatasetInterface(TypedDict):
     x: np.ndarray
