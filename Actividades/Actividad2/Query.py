@@ -1,10 +1,11 @@
 import numpy as np
+from Builder import DatasetInterface
 
 class Query:
     """
     Clase para realizar búsquedas y consultas sobre el dataset procesado.
     """
-    def __init__(self, dataset):
+    def __init__(self, dataset: DatasetInterface):
         self.dataset = dataset
         self.id_index = {sample["id"]: sample for sample in dataset["samples"]}
 

@@ -1,7 +1,15 @@
-#crear una clase Sanitizar para tratar un list de datos csv
+from typing import TypedDict, List, Dict, Any, Union
+
+class SampleInterface(TypedDict):
+    id: str
+    label: str
+    features: List[Union[int, float]]
+    metadata: Dict[str, Any]
+
+
 class Sanitizer:
     data = []
-    samples = []
+    samples: List[SampleInterface] = []
     trash = []
     duplicated_keys = []
     def __init__(self, data):
@@ -63,7 +71,7 @@ class Sanitizer:
                         
                         row[col] = None
         return self.data
-    def shaper( self, key_id: str,  key_label: str, feature_keys: list[str] = [], metadata_keys: list[str] = []):
+    def shaper( self, key_id: str,  key_label: str, feature_keys: list[str] = [], metadata_keys: list[str] = []) -> List[SampleInterface]:
         """
         Convertir a una estructura que sigue las buenas practicas {id, label, features, metadata}
         """
@@ -77,7 +85,7 @@ class Sanitizer:
             })
         self.samples = samples
         return samples
-    def add_sample(self, new_sample, expected_feature_length):
+    def add_sample(self, new_sample, expected_feature_length) -> List[SampleInterface]:
         required_keys = {"id", "label", "features", "metadata"}
         if not required_keys.issubset(new_sample.keys()):
             raise ValueError(f"La muestra debe contener las llaves: {required_keys}")

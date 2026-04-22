@@ -1,14 +1,34 @@
 import numpy as np
+from typing import TypedDict, List, Dict, Any
+from Sanitizer import SampleInterface
+
+class DatasetInterface(TypedDict):
+    x: np.ndarray
+    y: np.ndarray
+    ids: List[str]
+    samples: List[Dict[str, Any]]
+    class_to_index: Dict[str, int]
+    index_to_class: Dict[int, str]
+    metadata: List[Dict[str, Any]]
+    
 
 class Builder:
     """
     Clase encargada de la construcción y partición de datasets procesados.
     """
-    samples = []
+    samples = List[SampleInterface]
     trash = []
     duplicated = []
-    dataset = {}
-    def __init__(self,samples):
+    dataset: DatasetInterface = {
+        "x": None,
+        "y": None,
+        "ids": None,
+        "samples": None,
+        "class_to_index": None,
+        "index_to_class": None,
+        "metadata": None
+    }
+    def __init__(self, samples: List [SampleInterface]):
         """
         Inicializar los datos.
         """
@@ -63,7 +83,7 @@ class Builder:
                 self.duplicated.append(sample)
         self.samples = unique_samples
         
-    def build_dataset(self):
+    def build_dataset(self) -> DatasetInterface | None: 
         """
             Construir todo lo necesario para que el dataset siga lo visto en clase
         """
@@ -117,17 +137,29 @@ class Builder:
             "train": {
                 "x": x[train_idx],
                 "y": y[train_idx],
-                "ids": [ids[i] for i in train_idx]
+                "metadata": [self.dataset["metadata"][i] for i in train_idx],
+                "ids": [ids[i] for i in train_idx],
+                "samples": [self.dataset["samples"][i] for i in train_idx],
+                "class_to_index": self.dataset["class_to_index"],
+                "index_to_class": self.dataset["index_to_class"]
             },
             "validation": {
                 "x": x[val_idx],
                 "y": y[val_idx],
-                "ids": [ids[i] for i in val_idx]
+                "ids": [ids[i] for i in val_idx],
+                "samples": [self.dataset["samples"][i] for i in val_idx],
+                "class_to_index": self.dataset["class_to_index"],
+                "index_to_class": self.dataset["index_to_class"],
+                "metadata": [self.dataset["metadata"][i] for i in val_idx]
             },
             "test": {
                 "x": x[test_idx],
                 "y": y[test_idx],
-                "ids": [ids[i] for i in test_idx]
+                "ids": [ids[i] for i in test_idx],
+                "samples": [self.dataset["samples"][i] for i in test_idx],
+                "class_to_index": self.dataset["class_to_index"],
+                "index_to_class": self.dataset["index_to_class"],
+                "metadata": [self.dataset["metadata"][i] for i in test_idx]
             }
         }
     def normalize_labels(self):

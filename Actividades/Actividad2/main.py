@@ -28,7 +28,10 @@ def load_csv(file_path):
     except Exception as e:
         print(f"Ocurrió un error al leer el archivo: {e}")
         return None
-
+def export_to_json(dataset, name):
+    with open(name, 'w', encoding='utf-8') as f:
+        json.dump(dataset, f, ensure_ascii=False, indent=4, cls=ExportJSON)
+    print(20*"==","Dataset exportado como: ",name, 20*"==","\n")
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         ruta_archivo = sys.argv[1]
@@ -87,17 +90,23 @@ if __name__ == "__main__":
             print(builder.trash[np.random.randint(0,len(builder.trash))])
         print(20*"==","Duplicidad en construccion",len(builder.duplicated), 20*"==","\n")
         # exportar el dataset a un .json 
+        export_to_json(dataset, 'dataset_procesado.json')
 
-        with open('dataset_procesado.json', 'w', encoding='utf-8') as f:
-            json.dump(dataset, f, ensure_ascii=False, indent=4, cls=ExportJSON)
-        print(20*"==","Dataset exportado a dataset_procesado.json", 20*"==","\n")
-
-        #for key, value in dataset.items():
-        #    print(f"{key}: {value}")
+        print(20*"==","Resumen de dataset", 20*"==","\n")
+        for key, value in dataset.items():
+            print(f"{key}: {len(value)} items")
         #separar en entrenamiento, validacion y pruebas
         trainer = builder.split_dataset()
-        # for key, value in trainer.items():
-        #     print(f"{key}: {value}")
+        for key in trainer.keys():
+            export_to_json(trainer[key],'dataset_procesado_' + key + '.json')
+
+        print(20*"==","Resumen de division (train, validation,test)", 20*"==","\n")
+        for key, value in trainer.items():
+            print(f"{key}: {len(value)} llaves")
+            for key, value in value.items():
+                print(f"{key}: {len(value)} items")
+            print("---" * 40, "\n")
+        
         #consultas
         query = Query(dataset)
         print(20*"==","Explorando datasets", 20*"==","\n")
@@ -105,13 +114,16 @@ if __name__ == "__main__":
         # filtrar por label
         query_by_label = query.filter_by_label('warning')
         print(20*"==","Comprobacion del filtro metadatos", 20*"==","\n")
-        print(set([ s['label'] for s in query_by_label ]))
+        print("Unica etiqueta: ",set([ s['label'] for s in query_by_label ]), "\n")
+        print(query_by_label[np.random.randint(0,len(query_by_label))])
         # print(query_by_label)
         # filtrar metadatos
         query_by_metadata = query.filter_by_metadata('crucero','cruce_d')
         # print(query_by_metadata)
         print(20*"==","Comprobacion del filtro metadatos", 20*"==","\n")
-        print(set([ s['metadata']['crucero'] for s in query_by_metadata ]))
+        print("Unico metadato: ",set([ s['metadata']['crucero'] for s in query_by_metadata ]), "\n")
+        print(query_by_metadata[np.random.randint(0,len(query_by_metadata))])
+
 
         # estadisticas al dataset
         print(20*"==","Estadisticas básicas", 20*"==","\n")
