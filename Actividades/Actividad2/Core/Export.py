@@ -1,6 +1,9 @@
 import json
 import numpy as np
 class ExportJSON(json.JSONEncoder):
+    """
+        Formateo para exportacion de datos en json
+    """
     def default(self, obj):
         if isinstance(obj, np.integer):
             return int(obj)

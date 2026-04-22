@@ -12,8 +12,8 @@ from Core.Sanitizer import *
 from Core.Builder import *
 from Core.Query import *
 
-#leer un csv y cargarlo en memoria
 
+#leer un csv y cargarlo en memoria
 def load_csv(file_path):
     data = []
     try:

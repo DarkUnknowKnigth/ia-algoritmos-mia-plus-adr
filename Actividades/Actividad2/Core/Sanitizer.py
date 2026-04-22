@@ -1,5 +1,7 @@
 from typing import TypedDict, List, Dict, Any, Union
-
+"""
+    Interfaz de datos para asegurar la estructura vista en clase de un sample
+"""
 class SampleInterface(TypedDict):
     id: str
     label: str
@@ -8,6 +10,9 @@ class SampleInterface(TypedDict):
 
 
 class Sanitizer:
+    """
+        Clase que limpia los datos crudos y los lleva a la estructura de buenas practicas de samples como vimos en clase
+    """
     data = []
     samples: List[SampleInterface] = []
     trash = []

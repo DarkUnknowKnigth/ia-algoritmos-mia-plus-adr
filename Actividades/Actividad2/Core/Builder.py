@@ -1,7 +1,9 @@
 import numpy as np
 from typing import TypedDict, List, Dict, Any
 from Core.Sanitizer import SampleInterface
-
+"""
+Interfaz buscando tener la estructura visa en clase
+"""
 class DatasetInterface(TypedDict):
     x: np.ndarray
     y: np.ndarray
