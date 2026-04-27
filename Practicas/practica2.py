@@ -103,8 +103,129 @@ print("y dtype: ", y.dtype)
 
 #Seleccion de la primera muestra
 print("primera muestra: ", X[0])
+print("Dimension de la primera muestra: ", X[0].shape)
 #Seleccion de un columna
-print("Primera columna: ", X[0][0])
+feature0 = X[:,0]
+print("Primera columna: ", feature0)
 #Operaciones elemento a elemento
-xx = np.dot(x,x)
-print("xy: ", xx)
+# print(X*2)
+# print(X+2)
+#estadisticas por columna indicar el axis
+print("media: ", np.mean(X,axis=0))
+print("desviacion estandar: ", np.std(X,axis=0))
+print("minimo: ", np.min(X,axis=0))
+print("maximo: ", np.max(X,axis=0))
+
+#primera neurona artificial
+#definir entradas, pesos y sesgo
+
+#entrada
+x = X[0]
+#pesos
+w = np.array([0.5,-0.2,0.8,0.1], dtype=np.float32)
+#sesgo
+b = 0.3
+#calcular la salida lineal
+y = np.dot(x,w) + b
+print("salida lineal dot: ", y)
+y2 = x@w + b
+print("salida matricial lineal: ", y2)
+
+#Funcion de neurona artificial
+def neuron_forward(x,w,b):
+    return np.dot(x,w) + b
+
+y = neuron_forward(x,w,b)
+print("salida de la neurona: ", y)
+
+#funciones de activacion
+test_values = np.array([-2.0,-0.5,1.2,3.4])
+#relu quita los negativos
+def reLu(x):
+    return np.maximum(0,x)
+
+print("reLu: ", reLu(test_values))
+
+#sigmoide salidas acotadas entre 0 y 1
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+print("sigmoide: ", sigmoid(test_values))
+
+#softmax cada uno de los datos es la resta del maximo de todos al final los datos suman 1 meneja la probabilidad del valor con respecto a la clase
+def softmax(x):
+    x_shifted = x - np.max(x)
+    exp_values = np.exp(x_shifted)
+    return exp_values / np.sum(exp_values)
+print("softmax: ", softmax(test_values))
+print("softmax suma: ", np.sum(softmax(test_values)))
+
+#Neurona con activacion
+def neurona_forward_with_activation(x,w,b, activation = None):
+    y = np.dot(x,w) + b
+    if activation is None:
+        return y
+    return activation(y)
+# esto se conoce como una capa simple
+print("neurona sin activacion: ", neurona_forward_with_activation(x,w,b))
+print("neurona con activacion relu: ", neurona_forward_with_activation(x,w,b,reLu))
+print("neurona con activacion sigmoid: ", neurona_forward_with_activation(x,w,b,sigmoid))
+print("neurona con activacion: softmax", neurona_forward_with_activation(x,w,b,softmax))
+# Pasar de una neurona en una capa simple a una capa densa
+w1 = np.array([
+    [0.5,-0.2,0.8],
+    [0.2,0.2,0.8],
+    [0.3,-0.5,0.8],
+    [0.1,-0.3,0.8],
+])
+b1 = np.array([0.1, -0.2,0.05])
+x = X[0]
+y1 = x@w1 + b1
+print("resultado y1: ", y1)
+print("Dimensiones de y1: ", y1.shape)
+
+y1 = X@w1+b1
+print("resultado y1: ", y1)
+print("Dimensiones de y1: ", y1.shape)
+
+A1 = reLu(y1)
+print("resultado Relu(A1): ", A1)
+print("Dimensiones de Relu(A1): ", A1.shape)
+#funcion general para todas las muestras
+"""
+Recibe X = vector
+w= neuronas
+b= sesgos
+activation = funcion de activacion
+"""
+def dense_forward_batch(X,w,b, activation = None):
+    y = X@w + b
+    if activation is None:
+        return y
+    return activation(y)
+
+A2 = dense_forward_batch(X,w1,b1,reLu)
+print("resultado Relu(A2): ", A2)
+print("Dimensiones de Relu(A2): ", A2.shape)
+
+#construir una red neuronal de dos capas
+#capa 1 
+#5 neuronas
+w1 = np.array([
+    [0.2,-0.1,0.5,0.7,-0.3],
+    [0.5,0.3,-0.2,0.1,0.6],
+    [-0.4,0.8,0.5,-0.6,0.2],
+    [0.1,-0.5,0.3,0.2,0.4],
+], np.float32)
+b1 = np.array([
+    0.1,-0.2,0.05, 0,0.15
+], np.float32)
+#como la w1 saca 5 salidas necesitamos tener un w2 de 5 columnas
+w2 =np.array([
+    [0.3, -0.2, 0.5],
+    [-0.4, 0.6, 0.1],
+    [0.2, 0.1, -0.3],
+    [0.5, -0.4, 0.2],
+    [-0.1, 0.3, 0.4],
+],np.float32)
+
+b2 = np.array([0.05, -0.1,0.2 ], np.float32)
