@@ -1,4 +1,5 @@
 import numpy as np
+import time
 import math
 #un arreglo ndimensional de numpy simpre lleva un tipo de dato en concreto
 x = np.array([1.0,1.2,1.3],np.float32)
@@ -86,7 +87,7 @@ X = np.array([
 [1.351367 ,  1.0466138 , 2.572242,   4.7578664 ]
 ], dtype = np.float32	)
 # clases
-y = np.array([1,1,2,2,0,0,1,2,0], dtype = np.int64)
+y_real = np.array([1,1,2,2,0,0,1,2,0], dtype = np.int64)
 # mapa de clases
 class_names = {
     0:'critical',
@@ -229,3 +230,144 @@ w2 =np.array([
 ],np.float32)
 
 b2 = np.array([0.05, -0.1,0.2 ], np.float32)
+print("-"*40,'\n')
+A1 = dense_forward_batch(X,w1,b1,reLu)
+Z2 = dense_forward_batch(A1,w2,b2)
+print("A1: ",A1)
+print("-"*40,'\n')
+print("Dimensiones salida primera capa:", A1.shape)
+print(Z2)
+print("-"*40,'\n')
+print("Dimensiones salida segunda capa:", Z2.shape)
+#probabilidades con softmax por fila
+
+def softmax_batch(X):
+    X_shifed = X - np.max(X, axis=1, keepdims=True)
+    exp_values = np.exp(X_shifed)
+    return exp_values / np.sum(exp_values, axis=1, keepdims=True)
+
+Prob = softmax_batch(Z2)
+print("probabilidades: ", Prob)
+print("dimensiones de probabilidades: ", Prob.shape)
+print("Suma por filas: ", np.sum(Prob, axis=1))
+
+#obtener la clase predicha
+#armax selecciona el indice de la fila con valor maximo
+y_pred = np.argmax(Prob, axis=1)
+print("clases predichas: ", y_pred)
+predicted_classes = [class_names[idx] for idx in y_pred ]
+print("clases predichas: ", predicted_classes)
+
+#Funcion completa de inferencia para una red de dos capas
+# forward singnifica que todo valor de salida lo pasa a la siguiente capa
+def neural_network_forward(X,w1,b1,w2,b2):
+    A1 = dense_forward_batch(X,w1,b1,reLu)
+    Z2 = dense_forward_batch(A1,w2,b2)
+    Prob = softmax_batch(Z2)
+    return {
+        "A1":A1,
+        "Z2":Z2,
+        "Prob":Prob,
+        "y_pred":np.argmax(Prob, axis=1)
+    }
+Results = neural_network_forward(X,w1,b1,w2,b2)
+print("Resultado A1: ", Results['A1'])
+print("Resultado Z2: ", Results['Z2'])
+print("Resultado Prob: ", Results['Prob'])
+print("Resultado y_pred: ", Results['y_pred'])
+print("clases predichas: ", [class_names[idx] for idx in Results["y_pred"]])
+
+#Evaluacion simple de prediccions
+# con esto encontramos la presicion
+def accuracy_score(y_true, y_pred):
+    return np.mean(y_true == y_pred)
+
+print("Valor real ", y_real )
+print("Valor predicho ", Results["y_pred"])
+acc = accuracy_score(y_real, Results["y_pred"])
+print("Accuracy: ", acc)
+
+
+#Version iterativa de una capa densa
+def dense_forward_iterative(X,w,b, activation = None):
+    outputs = []
+    for i in range(len(X)):
+        x = X[i]
+        z = X@w + b
+        if activation is None:
+            outputs.append(z)
+        else:
+            outputs.append(activation(z))
+    return np.array(outputs)
+start_time=time.time()
+A1_iter = dense_forward_iterative(X,w1,b1,reLu)
+end_time = time.time()
+start_time2=time.time()
+A1_vect = dense_forward_batch(X,w1,b1,reLu)
+end_time2 = time.time()
+
+print("Igualdad numerica: ", np.allclose(A1_iter,A1_vect))
+print(f"Tiempos iterativo: {end_time - start_time:.10f}") #poner formato no cientificoponer formato no cientifico
+print(f"Tiempos vectorizado: {end_time2 - start_time2:.10f}")
+# print("Valores A1_iter", A1_iter)
+# print("Valores A1_vect", A1_vect)
+#evaluar el tiempo 1000 veces
+start = time.time()
+for i in range(1000):
+    A1_iter = dense_forward_iterative(X,w1,b1,reLu)
+end_iter = time.time()
+start2 = time.time()
+for i in range(1000):
+    A1_vect = dense_forward_batch(X,w1,b1,reLu)
+end_vect = time.time()
+print(f"Tiempos iterativo: {end_iter - start:.10f}") 
+print(f"Tiempos vectorizado: {end_vect - start2:.10f}")
+#inspeccion de las dimensiones
+def print_shape(name, array):
+    print(f"{name} shape: {array.shape}")
+
+print_shape("X", X)
+print_shape("w1", w1)
+print_shape("b1", b1)
+print_shape("w2", w2)
+print_shape("b2", b2)
+
+
+n_samples, n_features = X.shape
+n_features_W1, n_outpues = w1.shape
+
+# Validacion preventiva
+def validate_dense_shapes(X,W,b):
+    if X.ndim != 2:
+        raise ValueError(f"X debe ser una matriz bidimensional {n_samples}x{n_features}")
+    if W.ndim != 2:
+        raise ValueError(f"W debe ser una matriz bidimensional {n_features_W1}x{n_outpues}")
+    if b.ndim != 1:
+        raise ValueError("b debe ser un vector unidimensional")
+    if X.shape[1] != W.shape[0]:
+        raise ValueError("El numero de columnas de X debe ser igual al numero de filas de W")
+    if W.shape[1] != b.shape[0]:
+        raise ValueError("El numero de columnas de W debe ser igual al numero de filas de b")
+    
+validate_dense_shapes(X,w1,b1)
+# validate_dense_shapes(w1,w2,b2)
+def dense_forward_single(x,w,b, activation = None):
+    z = np.dot(x,w) + b
+    if activation is None:
+        return z
+    return activation(z)
+#prediccion de una muestra
+def predict_single(x,w1,b1,w2,b2):
+    a1 = dense_forward_single(x,w1,b1,reLu)
+    z2 = dense_forward_single(a1,w2,b2)
+    p = softmax(z2)
+    y_pred = np.argmax(p)
+    return {
+        "hidden":a1,
+        "scores":z2,
+        "probabilities":p,
+        "predicted_class_index":y_pred,
+        "predicted_class_name": class_names[y_pred]
+    }
+result_single = predict_single(X[0],w1,b1,w2,b2)
+print(result_single)
