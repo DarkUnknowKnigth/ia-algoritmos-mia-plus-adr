@@ -11,6 +11,8 @@ from Core.Export import *
 from Core.Sanitizer import *
 from Core.Builder import *
 from Core.Query import *
+from Core.Layer import *
+from Core.Prediction import *
 
 
 #leer un csv y cargarlo en memoria
@@ -164,3 +166,72 @@ if __name__ == "__main__":
             print(stat, stats[stat])
         print(20*"==","Explorando distribucion muestral metadata: calidad(high)", 20*"==","\n")
         print(query_high_dataset.class_distribution())     
+
+        #Capas de redes neuronales
+        #peso 1 -> 3 neuronas
+        w1 = np.array([
+            [
+                160.2899932861328,
+                40.34000015258789,
+                12.449999809265137,
+            ],
+            [
+                123.2899932861328,
+                30.34000015258789,
+                8.449999809265137,
+            ],
+            [
+                160.2899932861328,
+                10.34000015258789,
+                10.449999809265137,
+            ],
+            [
+                160.2899932861328,
+                24.34000015258789,
+                5.449999809265137,
+            ]
+        ], np.float32)
+        #sesgo 1
+        b1 = np.array([
+            -1,
+            0,
+            2
+        ])
+        #peso 2 -> 3 neuronas
+        w2 = np.array([
+            [
+                160.2899932861328,
+                40.34000015258789,
+                12.449999809265137,
+            ],
+            [
+                123.2899932861328,
+                30.34000015258789,
+                8.449999809265137,
+            ],
+            [
+                160.2899932861328,
+                10.34000015258789,
+                10.449999809265137,
+            ]
+        ], np.float32)
+        #sesgo 2
+        b2= np.array([
+            1,
+            -1,
+            2
+        ])
+        #capa basica 1
+        layer = Layer(w1,b1)
+        #capa basica 2
+        layer2 = Layer(w2,b2)
+        #prediccion
+        #cargar el dataset al predictor
+        prediction = Prediction(dataset)
+        #agregar las capas al predictor
+        prediction.addLayer(layer)
+        prediction.addLayer(layer2)
+        #realizar la prediccion indicando que layers vamos a usar (clase mapeada solo necesitamos los index)
+        prediction.predict(layer_index1=0, layer_index2=1)
+        #verificar la prediccion
+        [print(key, prediction.predictions[0][key]) for key in prediction.predictions[0].keys()]
