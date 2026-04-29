@@ -166,7 +166,9 @@ if __name__ == "__main__":
             print(stat, stats[stat])
         print(20*"==","Explorando distribucion muestral metadata: calidad(high)", 20*"==","\n")
         print(query_high_dataset.class_distribution())     
-
+        
+        
+        print(20*"==","Creando capas de la red neuronal", 20*"==","\n")
         #Capas de redes neuronales
         #peso 1 -> 3 neuronas
         w1 = np.array([
@@ -226,12 +228,17 @@ if __name__ == "__main__":
         #capa basica 2
         layer2 = Layer(w2,b2)
         #prediccion
+
         #cargar el dataset al predictor
         prediction = Prediction(dataset)
         #agregar las capas al predictor
         prediction.addLayer(layer)
         prediction.addLayer(layer2)
+        print(20*"==",f"Agregando capas de la red neuronal ({len(prediction.layers)})", 20*"==","\n")
         #realizar la prediccion indicando que layers vamos a usar (clase mapeada solo necesitamos los index)
+        print(20*"==","Realizando preduccion...", 20*"==","\n")
         prediction.predict(layer_index1=0, layer_index2=1)
+        print(20*"==","Explorando predicciones a la red", 20*"==","\n")
         #verificar la prediccion
-        [print(key, prediction.predictions[0][key]) for key in prediction.predictions[0].keys()]
+        random_index_prediction = np.random.randint(0,len(prediction.predictions))
+        [print(key, prediction.predictions[random_index_prediction][key]) for key in prediction.predictions[random_index_prediction].keys()]
