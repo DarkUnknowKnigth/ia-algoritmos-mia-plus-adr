@@ -1,34 +1,10 @@
 {
     "x": [
         [
-            211.6300048828125,
-            44.560001373291016,
-            16.610000610351562,
-            26.979999542236328
-        ],
-        [
-            309.260009765625,
-            37.349998474121094,
-            16.1299991607666,
-            26.68000030517578
-        ],
-        [
-            849.239990234375,
-            15.079999923706055,
-            66.87000274658203,
-            178.8000030517578
-        ],
-        [
-            193.6300048828125,
-            44.540000915527344,
-            11.0600004196167,
-            15.239999771118164
-        ],
-        [
-            385.1300048828125,
-            14.920000076293945,
-            21.040000915527344,
-            60.95000076293945
+            238.5,
+            36.34000015258789,
+            14.1899995803833,
+            25.90999984741211
         ],
         [
             147.07000732421875,
@@ -37,88 +13,124 @@
             33.08000183105469
         ],
         [
-            236.07000732421875,
-            42.040000915527344,
-            12.050000190734863,
-            12.0
+            283.989990234375,
+            49.47999954223633,
+            12.239999771118164,
+            17.68000030517578
         ],
         [
-            216.91000366210938,
-            47.08000183105469,
-            17.290000915527344,
-            25.34000015258789
+            309.260009765625,
+            37.349998474121094,
+            16.1299991607666,
+            26.68000030517578
         ],
         [
-            609.969970703125,
-            15.5,
-            61.810001373291016,
-            107.72000122070312
+            382.1700134277344,
+            30.729999542236328,
+            34.09000015258789,
+            71.5199966430664
         ],
         [
-            812.1400146484375,
-            12.3100004196167,
-            56.13999938964844,
-            155.47999572753906
+            499.2799987792969,
+            26.739999771118164,
+            18.309999465942383,
+            52.25
         ],
         [
-            227.88999938964844,
-            39.31999969482422,
-            19.8700008392334,
-            21.719999313354492
+            193.6300048828125,
+            44.540000915527344,
+            11.0600004196167,
+            15.239999771118164
         ],
         [
-            831.0,
-            11.3100004196167,
-            54.52000045776367,
-            93.08999633789062
+            184.27999877929688,
+            39.9900016784668,
+            14.380000114440918,
+            28.020000457763672
         ],
         [
-            195.27999877929688,
-            48.09000015258789,
-            17.229999542236328,
-            29.0
+            795.010009765625,
+            11.960000038146973,
+            56.43000030517578,
+            160.82000732421875
         ],
         [
-            751.010009765625,
-            11.59000015258789,
-            50.08000183105469,
-            127.20999908447266
+            417.8500061035156,
+            26.5,
+            34.70000076293945,
+            60.15999984741211
         ],
         [
-            895.5700073242188,
-            9.729999542236328,
-            46.72999954223633,
-            129.8000030517578
+            527.6799926757812,
+            6.289999961853027,
+            67.0,
+            70.30999755859375
         ],
         [
-            823.530029296875,
-            17.920000076293945,
-            69.62999725341797,
-            94.95999908447266
+            822.489990234375,
+            11.630000114440918,
+            54.47999954223633,
+            158.38999938964844
         ],
         [
-            778.8300170898438,
-            13.15999984741211,
-            69.63999938964844,
-            122.33000183105469
+            487.510009765625,
+            26.329999923706055,
+            33.540000915527344,
+            36.38999938964844
         ],
         [
-            545.0,
-            6.099999904632568,
-            46.25,
-            154.72999572753906
+            393.2099914550781,
+            22.75,
+            18.1200008392334,
+            73.94999694824219
         ],
         [
-            373.9800109863281,
-            17.809999465942383,
-            26.3700008392334,
-            73.29000091552734
+            127.4000015258789,
+            48.95000076293945,
+            13.369999885559082,
+            21.299999237060547
         ],
         [
-            421.7699890136719,
-            26.110000610351562,
-            21.0,
-            60.0
+            161.2899932861328,
+            41.34000015258789,
+            12.449999809265137,
+            17.030000686645508
+        ],
+        [
+            406.69000244140625,
+            16.0,
+            32.619998931884766,
+            46.29999923706055
+        ],
+        [
+            161.8000030517578,
+            28.600000381469727,
+            18.760000228881836,
+            24.40999984741211
+        ],
+        [
+            709.4299926757812,
+            10.829999923706055,
+            50.970001220703125,
+            104.23999786376953
+        ],
+        [
+            257.42999267578125,
+            48.220001220703125,
+            10.479999542236328,
+            21.09000015258789
+        ],
+        [
+            227.25,
+            47.0099983215332,
+            19.209999084472656,
+            23.360000610351562
+        ],
+        [
+            269.94000244140625,
+            41.40999984741211,
+            12.119999885559082,
+            18.93000030517578
         ],
         [
             745.510009765625,
@@ -127,173 +139,89 @@
             139.94000244140625
         ],
         [
-            783.6400146484375,
-            5.46999979019165,
-            47.68000030517578,
-            125.75
+            384.32000732421875,
+            14.479999542236328,
+            33.59000015258789,
+            53.83000183105469
         ],
         [
-            306.6700134277344,
-            32.540000915527344,
-            8.40999984741211,
-            25.59000015258789
-        ],
-        [
-            370.44000244140625,
-            14.25,
-            21.1200008392334,
-            35.77000045776367
-        ],
-        [
-            594.3499755859375,
-            12.149999618530273,
-            56.59000015258789,
-            171.5399932861328
+            481.239990234375,
+            25.479999542236328,
+            28.459999084472656,
+            45.470001220703125
         ]
     ],
     "y": [
         2,
         2,
-        0,
         2,
+        2,
+        3,
         3,
         2,
         2,
-        2,
         0,
-        0,
-        2,
-        0,
-        2,
-        0,
-        0,
-        0,
+        3,
         0,
         0,
         3,
         3,
-        0,
-        0,
+        2,
         2,
         3,
-        0
+        2,
+        0,
+        2,
+        2,
+        2,
+        0,
+        3,
+        3
     ],
     "ids": [
-        "tra_076",
-        "tra_077",
-        "tra_009",
-        "tra_031",
-        "tra_047",
+        "tra_095",
         "tra_140",
-        "tra_055",
-        "tra_091",
-        "tra_105",
-        "tra_012",
-        "tra_103",
-        "tra_133",
-        "tra_015",
-        "tra_079",
-        "tra_118",
-        "tra_134",
-        "tra_019",
-        "tra_020",
-        "tra_173",
-        "tra_155",
+        "tra_074",
+        "tra_077",
+        "tra_036",
+        "tra_051",
+        "tra_031",
+        "tra_088",
+        "tra_144",
+        "tra_166",
+        "tra_045",
+        "tra_100",
+        "tra_113",
+        "tra_014",
+        "tra_107",
+        "tra_191",
+        "tra_008",
+        "tra_066",
+        "tra_071",
+        "tra_122",
+        "tra_152",
+        "tra_092",
         "tra_180",
-        "tra_033",
-        "tra_147",
-        "tra_188",
-        "tra_117"
+        "tra_123",
+        "tra_135"
     ],
     "samples": [
         {
-            "id": "tra_076",
+            "id": "tra_095",
             "label": "normal",
             "features": [
-                211.63,
-                44.56,
-                16.61,
-                26.98
+                238.5,
+                36.34,
+                14.19,
+                25.91
             ],
             "metadata": {
-                "fecha_medicion": "2026-03-01",
-                "vehiculos_hora": 211.63,
-                "crucero": "cruce_a",
-                "zona": "oriente",
-                "calidad_medicion": "high",
-                "observacion": ""
-            }
-        },
-        {
-            "id": "tra_077",
-            "label": "normal",
-            "features": [
-                309.26,
-                37.35,
-                16.13,
-                26.68
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-21",
-                "vehiculos_hora": 309.26,
-                "crucero": "cruce_d",
-                "zona": "norte",
-                "calidad_medicion": "low",
-                "observacion": "obra cercana"
-            }
-        },
-        {
-            "id": "tra_009",
-            "label": "critical",
-            "features": [
-                849.24,
-                15.08,
-                66.87,
-                178.8
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-14",
-                "vehiculos_hora": 849.24,
+                "fecha_medicion": "2026-02-20",
+                "vehiculos_hora": 238.5,
                 "crucero": "cruce_c",
-                "zona": "oriente",
+                "zona": "sur",
                 "calidad_medicion": "high",
                 "observacion": ""
-            }
-        },
-        {
-            "id": "tra_031",
-            "label": "normal",
-            "features": [
-                193.63,
-                44.54,
-                11.06,
-                15.24
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-03-02",
-                "vehiculos_hora": 193.63,
-                "crucero": "cruce_d",
-                "zona": "norte",
-                "calidad_medicion": "high",
-                "observacion": "hora pico"
-            }
-        },
-        {
-            "id": "tra_047",
-            "label": "warning",
-            "features": [
-                385.13,
-                14.92,
-                21.04,
-                60.95
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-26",
-                "vehiculos_hora": 385.13,
-                "crucero": "cruce_a",
-                "zona": "norte",
-                "calidad_medicion": "high",
-                "observacion": "obra cercana"
             }
         },
         {
@@ -315,255 +243,363 @@
             }
         },
         {
-            "id": "tra_055",
+            "id": "tra_074",
             "label": "normal",
             "features": [
-                236.07,
-                42.04,
-                12.05,
-                12.0
+                283.99,
+                49.48,
+                12.24,
+                17.68
             ],
             "metadata": {
-                "fecha_medicion": "2026-02-13",
-                "vehiculos_hora": 236.07,
+                "fecha_medicion": "2026-02-22",
+                "vehiculos_hora": 283.99,
                 "crucero": "cruce_d",
                 "zona": "centro",
-                "calidad_medicion": "low",
+                "calidad_medicion": "high",
                 "observacion": "hora pico"
             }
         },
         {
-            "id": "tra_091",
+            "id": "tra_077",
             "label": "normal",
             "features": [
-                216.91,
-                47.08,
-                17.29,
-                25.34
+                309.26,
+                37.35,
+                16.13,
+                26.68
             ],
             "metadata": {
-                "fecha_medicion": "2026-02-26",
-                "vehiculos_hora": 216.91,
-                "crucero": "cruce_a",
+                "fecha_medicion": "2026-02-21",
+                "vehiculos_hora": 309.26,
+                "crucero": "cruce_d",
+                "zona": "norte",
+                "calidad_medicion": "low",
+                "observacion": "obra cercana"
+            }
+        },
+        {
+            "id": "tra_036",
+            "label": "warning",
+            "features": [
+                382.17,
+                30.73,
+                34.09,
+                71.52
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-12",
+                "vehiculos_hora": 382.17,
+                "crucero": "cruce_d",
                 "zona": "centro",
+                "calidad_medicion": "medium",
+                "observacion": "sin novedad"
+            }
+        },
+        {
+            "id": "tra_051",
+            "label": "warning",
+            "features": [
+                499.28,
+                26.74,
+                18.31,
+                52.25
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-18",
+                "vehiculos_hora": 499.28,
+                "crucero": "cruce_d",
+                "zona": "norte",
+                "calidad_medicion": "high",
+                "observacion": "lluvia"
+            }
+        },
+        {
+            "id": "tra_031",
+            "label": "normal",
+            "features": [
+                193.63,
+                44.54,
+                11.06,
+                15.24
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-03-02",
+                "vehiculos_hora": 193.63,
+                "crucero": "cruce_d",
+                "zona": "norte",
+                "calidad_medicion": "high",
+                "observacion": "hora pico"
+            }
+        },
+        {
+            "id": "tra_088",
+            "label": "normal",
+            "features": [
+                184.28,
+                39.99,
+                14.38,
+                28.02
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-21",
+                "vehiculos_hora": 184.28,
+                "crucero": "cruce_a",
+                "zona": "oriente",
+                "calidad_medicion": "high",
+                "observacion": "lluvia"
+            }
+        },
+        {
+            "id": "tra_144",
+            "label": "critical",
+            "features": [
+                795.01,
+                11.96,
+                56.43,
+                160.82
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-15",
+                "vehiculos_hora": 795.01,
+                "crucero": "cruce_b",
+                "zona": "norte",
+                "calidad_medicion": "high",
+                "observacion": "lluvia"
+            }
+        },
+        {
+            "id": "tra_166",
+            "label": "warning",
+            "features": [
+                417.85,
+                26.5,
+                34.7,
+                60.16
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-25",
+                "vehiculos_hora": 417.85,
+                "crucero": "cruce_b",
+                "zona": "centro",
+                "calidad_medicion": "medium",
+                "observacion": ""
+            }
+        },
+        {
+            "id": "tra_045",
+            "label": "critical",
+            "features": [
+                527.68,
+                6.29,
+                67.0,
+                70.31
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-03-01",
+                "vehiculos_hora": 527.68,
+                "crucero": "cruce_b",
+                "zona": "oriente",
+                "calidad_medicion": "high",
+                "observacion": "sin novedad"
+            }
+        },
+        {
+            "id": "tra_100",
+            "label": "critical",
+            "features": [
+                822.49,
+                11.63,
+                54.48,
+                158.39
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-03-02",
+                "vehiculos_hora": 822.49,
+                "crucero": "cruce_d",
+                "zona": "oriente",
                 "calidad_medicion": "high",
                 "observacion": "obra cercana"
             }
         },
         {
-            "id": "tra_105",
-            "label": "critical",
+            "id": "tra_113",
+            "label": "warning",
             "features": [
-                609.97,
-                15.5,
-                61.81,
-                107.72
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-27",
-                "vehiculos_hora": 609.97,
-                "crucero": "cruce_d",
-                "zona": "norte",
-                "calidad_medicion": "high",
-                "observacion": ""
-            }
-        },
-        {
-            "id": "tra_012",
-            "label": "critical",
-            "features": [
-                812.14,
-                12.31,
-                56.14,
-                155.48
+                487.51,
+                26.33,
+                33.54,
+                36.39
             ],
             "metadata": {
                 "fecha_medicion": "",
-                "vehiculos_hora": 812.14,
-                "crucero": "cruce_c",
+                "vehiculos_hora": 487.51,
+                "crucero": "cruce_a",
                 "zona": "oriente",
-                "calidad_medicion": "high",
-                "observacion": "hora pico"
-            }
-        },
-        {
-            "id": "tra_103",
-            "label": "normal",
-            "features": [
-                227.89,
-                39.32,
-                19.87,
-                21.72
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-23",
-                "vehiculos_hora": 227.89,
-                "crucero": "cruce_d",
-                "zona": "centro",
-                "calidad_medicion": "high",
-                "observacion": "sin novedad"
-            }
-        },
-        {
-            "id": "tra_133",
-            "label": "critical",
-            "features": [
-                831.0,
-                11.31,
-                54.52,
-                93.09
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-22",
-                "vehiculos_hora": 831.0,
-                "crucero": "cruce_b",
-                "zona": "poniente",
-                "calidad_medicion": "high",
+                "calidad_medicion": "low",
                 "observacion": "lluvia"
             }
         },
         {
-            "id": "tra_015",
-            "label": "normal",
+            "id": "tra_014",
+            "label": "warning",
             "features": [
-                195.28,
-                48.09,
-                17.23,
-                29.0
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-08",
-                "vehiculos_hora": 195.28,
-                "crucero": "cruce_b",
-                "zona": "centro",
-                "calidad_medicion": "medium",
-                "observacion": "obra cercana"
-            }
-        },
-        {
-            "id": "tra_079",
-            "label": "critical",
-            "features": [
-                751.01,
-                11.59,
-                50.08,
-                127.21
+                393.21,
+                22.75,
+                18.12,
+                73.95
             ],
             "metadata": {
                 "fecha_medicion": "2026-02-07",
-                "vehiculos_hora": 751.01,
-                "crucero": "cruce_d",
-                "zona": "poniente",
-                "calidad_medicion": "high",
-                "observacion": "lluvia"
-            }
-        },
-        {
-            "id": "tra_118",
-            "label": "critical",
-            "features": [
-                895.57,
-                9.73,
-                46.73,
-                129.8
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-05",
-                "vehiculos_hora": 895.57,
+                "vehiculos_hora": 393.21,
                 "crucero": "cruce_a",
                 "zona": "oriente",
-                "calidad_medicion": "low",
-                "observacion": ""
-            }
-        },
-        {
-            "id": "tra_134",
-            "label": "critical",
-            "features": [
-                823.53,
-                17.92,
-                69.63,
-                94.96
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-05",
-                "vehiculos_hora": 823.53,
-                "crucero": "cruce_b",
-                "zona": "poniente",
-                "calidad_medicion": "low",
-                "observacion": "obra cercana"
-            }
-        },
-        {
-            "id": "tra_019",
-            "label": "critical",
-            "features": [
-                778.83,
-                13.16,
-                69.64,
-                122.33
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-22",
-                "vehiculos_hora": 778.83,
-                "crucero": "cruce_a",
-                "zona": "poniente",
                 "calidad_medicion": "high",
-                "observacion": "obra cercana"
-            }
-        },
-        {
-            "id": "tra_020",
-            "label": "critical",
-            "features": [
-                545.0,
-                6.1,
-                46.25,
-                154.73
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-10",
-                "vehiculos_hora": 545.0,
-                "crucero": "cruce c",
-                "zona": "norte",
-                "calidad_medicion": "medium",
                 "observacion": "sin novedad"
             }
         },
         {
-            "id": "tra_173",
-            "label": "warning",
+            "id": "tra_107",
+            "label": "normal",
             "features": [
-                373.98,
-                17.81,
-                26.37,
-                73.29
+                127.4,
+                48.95,
+                13.37,
+                21.3
             ],
             "metadata": {
-                "fecha_medicion": "2026-02-11",
-                "vehiculos_hora": 373.98,
-                "crucero": "cruce_c",
+                "fecha_medicion": "",
+                "vehiculos_hora": 127.4,
+                "crucero": "cruce_b",
+                "zona": "sur",
+                "calidad_medicion": "high",
+                "observacion": "obra cercana"
+            }
+        },
+        {
+            "id": "tra_191",
+            "label": "normal",
+            "features": [
+                161.29,
+                41.34,
+                12.45,
+                17.03
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-10",
+                "vehiculos_hora": 161.29,
+                "crucero": "cruce_a",
+                "zona": "norte",
+                "calidad_medicion": "high",
+                "observacion": "obra cercana"
+            }
+        },
+        {
+            "id": "tra_008",
+            "label": "warning",
+            "features": [
+                406.69,
+                16.0,
+                32.62,
+                46.3
+            ],
+            "metadata": {
+                "fecha_medicion": "",
+                "vehiculos_hora": 406.69,
+                "crucero": "cruce_d",
                 "zona": "centro",
                 "calidad_medicion": "high",
+                "observacion": "obra cercana"
+            }
+        },
+        {
+            "id": "tra_066",
+            "label": "normal",
+            "features": [
+                161.8,
+                28.6,
+                18.76,
+                24.41
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-03-02",
+                "vehiculos_hora": 161.8,
+                "crucero": "cruce_b",
+                "zona": "poniente",
+                "calidad_medicion": "high",
+                "observacion": "obra cercana"
+            }
+        },
+        {
+            "id": "tra_071",
+            "label": "critical",
+            "features": [
+                709.43,
+                10.83,
+                50.97,
+                104.24
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-19",
+                "vehiculos_hora": 709.43,
+                "crucero": "cruce_b",
+                "zona": "poniente",
+                "calidad_medicion": "low",
                 "observacion": "hora pico"
             }
         },
         {
-            "id": "tra_155",
-            "label": "warning",
+            "id": "tra_122",
+            "label": "normal",
             "features": [
-                421.77,
-                26.11,
-                21.0,
-                60.0
+                257.43,
+                48.22,
+                10.48,
+                21.09
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-02-16",
+                "vehiculos_hora": 257.43,
+                "crucero": "cruce d",
+                "zona": "centro",
+                "calidad_medicion": "medium",
+                "observacion": "hora pico"
+            }
+        },
+        {
+            "id": "tra_152",
+            "label": "normal",
+            "features": [
+                227.25,
+                47.01,
+                19.21,
+                23.36
+            ],
+            "metadata": {
+                "fecha_medicion": "2026-03-01",
+                "vehiculos_hora": 227.25,
+                "crucero": "cruce_b",
+                "zona": "norte",
+                "calidad_medicion": "high",
+                "observacion": "obra cercana"
+            }
+        },
+        {
+            "id": "tra_092",
+            "label": "normal",
+            "features": [
+                269.94,
+                41.41,
+                12.12,
+                18.93
             ],
             "metadata": {
                 "fecha_medicion": "2026-02-23",
-                "vehiculos_hora": 421.77,
-                "crucero": "cruce_b",
-                "zona": "centro",
+                "vehiculos_hora": 269.94,
+                "crucero": "cruce_d",
+                "zona": "sur",
                 "calidad_medicion": "high",
-                "observacion": ""
+                "observacion": "lluvia"
             }
         },
         {
@@ -585,75 +621,39 @@
             }
         },
         {
-            "id": "tra_033",
-            "label": "critical",
-            "features": [
-                783.64,
-                5.47,
-                47.68,
-                125.75
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-28",
-                "vehiculos_hora": 783.64,
-                "crucero": "cruce_c",
-                "zona": "sur",
-                "calidad_medicion": "medium",
-                "observacion": "sin novedad"
-            }
-        },
-        {
-            "id": "tra_147",
-            "label": "normal",
-            "features": [
-                306.67,
-                32.54,
-                8.41,
-                25.59
-            ],
-            "metadata": {
-                "fecha_medicion": "2026-02-16",
-                "vehiculos_hora": 306.67,
-                "crucero": "cruce_c",
-                "zona": "poniente",
-                "calidad_medicion": "high",
-                "observacion": "hora pico"
-            }
-        },
-        {
-            "id": "tra_188",
+            "id": "tra_123",
             "label": "warning",
             "features": [
-                370.44,
-                14.25,
-                21.12,
-                35.77
+                384.32,
+                14.48,
+                33.59,
+                53.83
             ],
             "metadata": {
-                "fecha_medicion": "",
-                "vehiculos_hora": 370.44,
-                "crucero": "cruce_c",
+                "fecha_medicion": "2026-02-05",
+                "vehiculos_hora": 384.32,
+                "crucero": "cruce_a",
                 "zona": "norte",
-                "calidad_medicion": "medium",
-                "observacion": "sin novedad"
+                "calidad_medicion": "high",
+                "observacion": "lluvia"
             }
         },
         {
-            "id": "tra_117",
-            "label": "critical",
+            "id": "tra_135",
+            "label": "warning",
             "features": [
-                594.35,
-                12.15,
-                56.59,
-                171.54
+                481.24,
+                25.48,
+                28.46,
+                45.47
             ],
             "metadata": {
                 "fecha_medicion": "2026-03-01",
-                "vehiculos_hora": 594.35,
+                "vehiculos_hora": 481.24,
                 "crucero": "cruce_a",
-                "zona": "centro",
+                "zona": "norte",
                 "calidad_medicion": "high",
-                "observacion": ""
+                "observacion": "lluvia"
             }
         }
     ],
@@ -671,44 +671,12 @@
     },
     "metadata": [
         {
-            "fecha_medicion": "2026-03-01",
-            "vehiculos_hora": 211.63,
-            "crucero": "cruce_a",
-            "zona": "oriente",
-            "calidad_medicion": "high",
-            "observacion": ""
-        },
-        {
-            "fecha_medicion": "2026-02-21",
-            "vehiculos_hora": 309.26,
-            "crucero": "cruce_d",
-            "zona": "norte",
-            "calidad_medicion": "low",
-            "observacion": "obra cercana"
-        },
-        {
-            "fecha_medicion": "2026-02-14",
-            "vehiculos_hora": 849.24,
+            "fecha_medicion": "2026-02-20",
+            "vehiculos_hora": 238.5,
             "crucero": "cruce_c",
-            "zona": "oriente",
+            "zona": "sur",
             "calidad_medicion": "high",
             "observacion": ""
-        },
-        {
-            "fecha_medicion": "2026-03-02",
-            "vehiculos_hora": 193.63,
-            "crucero": "cruce_d",
-            "zona": "norte",
-            "calidad_medicion": "high",
-            "observacion": "hora pico"
-        },
-        {
-            "fecha_medicion": "2026-02-26",
-            "vehiculos_hora": 385.13,
-            "crucero": "cruce_a",
-            "zona": "norte",
-            "calidad_medicion": "high",
-            "observacion": "obra cercana"
         },
         {
             "fecha_medicion": "2026-02-10",
@@ -719,116 +687,164 @@
             "observacion": "sin novedad"
         },
         {
-            "fecha_medicion": "2026-02-13",
-            "vehiculos_hora": 236.07,
+            "fecha_medicion": "2026-02-22",
+            "vehiculos_hora": 283.99,
             "crucero": "cruce_d",
             "zona": "centro",
-            "calidad_medicion": "low",
+            "calidad_medicion": "high",
             "observacion": "hora pico"
         },
         {
-            "fecha_medicion": "2026-02-26",
-            "vehiculos_hora": 216.91,
-            "crucero": "cruce_a",
-            "zona": "centro",
-            "calidad_medicion": "high",
+            "fecha_medicion": "2026-02-21",
+            "vehiculos_hora": 309.26,
+            "crucero": "cruce_d",
+            "zona": "norte",
+            "calidad_medicion": "low",
             "observacion": "obra cercana"
         },
         {
-            "fecha_medicion": "2026-02-27",
-            "vehiculos_hora": 609.97,
+            "fecha_medicion": "2026-02-12",
+            "vehiculos_hora": 382.17,
+            "crucero": "cruce_d",
+            "zona": "centro",
+            "calidad_medicion": "medium",
+            "observacion": "sin novedad"
+        },
+        {
+            "fecha_medicion": "2026-02-18",
+            "vehiculos_hora": 499.28,
             "crucero": "cruce_d",
             "zona": "norte",
             "calidad_medicion": "high",
-            "observacion": ""
+            "observacion": "lluvia"
         },
         {
-            "fecha_medicion": "",
-            "vehiculos_hora": 812.14,
-            "crucero": "cruce_c",
-            "zona": "oriente",
+            "fecha_medicion": "2026-03-02",
+            "vehiculos_hora": 193.63,
+            "crucero": "cruce_d",
+            "zona": "norte",
             "calidad_medicion": "high",
             "observacion": "hora pico"
         },
         {
-            "fecha_medicion": "2026-02-23",
-            "vehiculos_hora": 227.89,
-            "crucero": "cruce_d",
+            "fecha_medicion": "2026-02-21",
+            "vehiculos_hora": 184.28,
+            "crucero": "cruce_a",
+            "zona": "oriente",
+            "calidad_medicion": "high",
+            "observacion": "lluvia"
+        },
+        {
+            "fecha_medicion": "2026-02-15",
+            "vehiculos_hora": 795.01,
+            "crucero": "cruce_b",
+            "zona": "norte",
+            "calidad_medicion": "high",
+            "observacion": "lluvia"
+        },
+        {
+            "fecha_medicion": "2026-02-25",
+            "vehiculos_hora": 417.85,
+            "crucero": "cruce_b",
             "zona": "centro",
+            "calidad_medicion": "medium",
+            "observacion": ""
+        },
+        {
+            "fecha_medicion": "2026-03-01",
+            "vehiculos_hora": 527.68,
+            "crucero": "cruce_b",
+            "zona": "oriente",
             "calidad_medicion": "high",
             "observacion": "sin novedad"
         },
         {
-            "fecha_medicion": "2026-02-22",
-            "vehiculos_hora": 831.0,
-            "crucero": "cruce_b",
-            "zona": "poniente",
+            "fecha_medicion": "2026-03-02",
+            "vehiculos_hora": 822.49,
+            "crucero": "cruce_d",
+            "zona": "oriente",
             "calidad_medicion": "high",
-            "observacion": "lluvia"
-        },
-        {
-            "fecha_medicion": "2026-02-08",
-            "vehiculos_hora": 195.28,
-            "crucero": "cruce_b",
-            "zona": "centro",
-            "calidad_medicion": "medium",
             "observacion": "obra cercana"
         },
         {
-            "fecha_medicion": "2026-02-07",
-            "vehiculos_hora": 751.01,
-            "crucero": "cruce_d",
-            "zona": "poniente",
-            "calidad_medicion": "high",
-            "observacion": "lluvia"
-        },
-        {
-            "fecha_medicion": "2026-02-05",
-            "vehiculos_hora": 895.57,
+            "fecha_medicion": "",
+            "vehiculos_hora": 487.51,
             "crucero": "cruce_a",
             "zona": "oriente",
             "calidad_medicion": "low",
-            "observacion": ""
+            "observacion": "lluvia"
         },
         {
-            "fecha_medicion": "2026-02-05",
-            "vehiculos_hora": 823.53,
-            "crucero": "cruce_b",
-            "zona": "poniente",
-            "calidad_medicion": "low",
-            "observacion": "obra cercana"
-        },
-        {
-            "fecha_medicion": "2026-02-22",
-            "vehiculos_hora": 778.83,
+            "fecha_medicion": "2026-02-07",
+            "vehiculos_hora": 393.21,
             "crucero": "cruce_a",
-            "zona": "poniente",
+            "zona": "oriente",
+            "calidad_medicion": "high",
+            "observacion": "sin novedad"
+        },
+        {
+            "fecha_medicion": "",
+            "vehiculos_hora": 127.4,
+            "crucero": "cruce_b",
+            "zona": "sur",
             "calidad_medicion": "high",
             "observacion": "obra cercana"
         },
         {
             "fecha_medicion": "2026-02-10",
-            "vehiculos_hora": 545.0,
-            "crucero": "cruce c",
+            "vehiculos_hora": 161.29,
+            "crucero": "cruce_a",
             "zona": "norte",
-            "calidad_medicion": "medium",
-            "observacion": "sin novedad"
+            "calidad_medicion": "high",
+            "observacion": "obra cercana"
         },
         {
-            "fecha_medicion": "2026-02-11",
-            "vehiculos_hora": 373.98,
-            "crucero": "cruce_c",
+            "fecha_medicion": "",
+            "vehiculos_hora": 406.69,
+            "crucero": "cruce_d",
             "zona": "centro",
             "calidad_medicion": "high",
+            "observacion": "obra cercana"
+        },
+        {
+            "fecha_medicion": "2026-03-02",
+            "vehiculos_hora": 161.8,
+            "crucero": "cruce_b",
+            "zona": "poniente",
+            "calidad_medicion": "high",
+            "observacion": "obra cercana"
+        },
+        {
+            "fecha_medicion": "2026-02-19",
+            "vehiculos_hora": 709.43,
+            "crucero": "cruce_b",
+            "zona": "poniente",
+            "calidad_medicion": "low",
             "observacion": "hora pico"
         },
         {
-            "fecha_medicion": "2026-02-23",
-            "vehiculos_hora": 421.77,
-            "crucero": "cruce_b",
+            "fecha_medicion": "2026-02-16",
+            "vehiculos_hora": 257.43,
+            "crucero": "cruce d",
             "zona": "centro",
+            "calidad_medicion": "medium",
+            "observacion": "hora pico"
+        },
+        {
+            "fecha_medicion": "2026-03-01",
+            "vehiculos_hora": 227.25,
+            "crucero": "cruce_b",
+            "zona": "norte",
             "calidad_medicion": "high",
-            "observacion": ""
+            "observacion": "obra cercana"
+        },
+        {
+            "fecha_medicion": "2026-02-23",
+            "vehiculos_hora": 269.94,
+            "crucero": "cruce_d",
+            "zona": "sur",
+            "calidad_medicion": "high",
+            "observacion": "lluvia"
         },
         {
             "fecha_medicion": "2026-02-23",
@@ -839,36 +855,20 @@
             "observacion": ""
         },
         {
-            "fecha_medicion": "2026-02-28",
-            "vehiculos_hora": 783.64,
-            "crucero": "cruce_c",
-            "zona": "sur",
-            "calidad_medicion": "medium",
-            "observacion": "sin novedad"
-        },
-        {
-            "fecha_medicion": "2026-02-16",
-            "vehiculos_hora": 306.67,
-            "crucero": "cruce_c",
-            "zona": "poniente",
-            "calidad_medicion": "high",
-            "observacion": "hora pico"
-        },
-        {
-            "fecha_medicion": "",
-            "vehiculos_hora": 370.44,
-            "crucero": "cruce_c",
+            "fecha_medicion": "2026-02-05",
+            "vehiculos_hora": 384.32,
+            "crucero": "cruce_a",
             "zona": "norte",
-            "calidad_medicion": "medium",
-            "observacion": "sin novedad"
+            "calidad_medicion": "high",
+            "observacion": "lluvia"
         },
         {
             "fecha_medicion": "2026-03-01",
-            "vehiculos_hora": 594.35,
+            "vehiculos_hora": 481.24,
             "crucero": "cruce_a",
-            "zona": "centro",
+            "zona": "norte",
             "calidad_medicion": "high",
-            "observacion": ""
+            "observacion": "lluvia"
         }
     ]
 }
