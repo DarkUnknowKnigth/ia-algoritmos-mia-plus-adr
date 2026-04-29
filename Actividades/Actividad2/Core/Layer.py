@@ -11,7 +11,7 @@ class Layer:
         """
         Realiza el forward pass para una sola muestra.
         """
-        # self.validate_dense_shapes(x)
+        self.validate_dense_shapes(x)
         z = np.dot(x, self.weights) + self.bias
         if activation:
             return activation(z)
