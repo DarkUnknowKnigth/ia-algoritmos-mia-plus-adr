@@ -122,7 +122,10 @@ def generate_argumented_dataset(base_samples, n_per_class =60, noise=0.12,seed =
     return X,y,ids
 
 X, y, ids = generate_argumented_dataset(base_samples)
+print("X: ", X)
+print("y: ", y)
+print("ids: ", ids)
 print("Dimension de x", X.shape)
 print("Dimension de y", y.shape)
-print("Distribucion: " ,{index_to_class[k]: int(np.sum(y==k)) for k in np.unique(y)} )
 print("Dimension de ids", len(ids ))
+print("Distribucion: " ,{index_to_class[k]: int(np.sum(y==k)) for k in np.unique(y)} )
