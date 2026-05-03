@@ -206,9 +206,126 @@ print("Suma filas softmax: ", softmax(logits_prueba).sum(axis=1) )
 def initialize_parameters(n_features, n_hidden, n_classes, seed=42):
     range = np.random.default_rng(seed)
     w1 = range.normal(0, np.sqrt(2/n_features), size=(n_features, n_hidden))
-    b1 = np.zeros(1, n_hidden)
+    b1 = np.zeros((1, n_hidden))
     w2 = range.normal(0, np.sqrt(2/n_hidden), size=(n_hidden, n_classes))
-    b2 = np.zeros(1, n_classes)
+    b2 = np.zeros((1, n_classes))
     return {"w1":w1, "b1":b1, "w2":w2, "b2":b2}
-params = initialize_parameters( n_features=4, n_hidden=10, n_classes=3, seed=42)
+params = initialize_parameters( n_features=4, n_hidden=8, n_classes=3, seed=42)
 
+for name, value in params.items():
+    print(f"{name}: {value.shape}")
+
+#propagacion hacia adelante
+def forward(x, params):
+    w1,b1,w2,b2 = params["w1"], params["b1"], params["w2"], params["b2"]
+    z1 = x @ w1 + b1
+    a1 = relu(z1)
+    logits = a1 @ w2 + b2
+    probabilities = softmax(logits)
+    cache = {
+        'X':x,
+        'z1':z1,
+        'a1':a1,
+        'logits':logits,
+        'probabilities':probabilities
+    }
+    return probabilities, cache
+# primer prediccion
+probs, cache = forward(X_train_normalized[:5], params)
+print("probs dimensiones: ", probs.shape)
+print("probs ejemplo: ", probs[0])
+
+#segundo paso - calculo de perdidas (cross entropy)
+def cross_entropy_lost(probabilities, y_true):
+    n = len(y_true)
+    selected = probabilities[np.arange(n), y_true]
+    return np.mean(np.log(selected + 1e-9))
+
+loss_initial = cross_entropy_lost(probs, Y_train[:5])
+print("perdida inicial: ", loss_initial)
+
+#retro propagacion paso a paso
+
+def backward(y_true, params, cache):
+    X = cache['X']
+    a1 = cache['a1']
+    z1 = cache['z1']
+    logits = cache['logits']
+    probabilities = cache['probabilities']
+    w2 = params['w2']
+    n = X.shape[0]
+    dlogits = probabilities.copy()
+    dlogits[np.arange(n), y_true] -= 1.0
+    dlogits /= n
+
+    dw2 = a1.T @ dlogits
+    db2 = dlogits.sum(axis=0, keepdims=True)
+    da1 = dlogits @ w2.T
+    dz1 = da1 * relu_prime(z1)
+    dw1 = X.T @ dz1
+    db1 = dz1.sum(axis=0, keepdims=True)
+    return {
+        'dw2':dw2,
+        'db2':db2,
+        'dw1':dw1,
+        'db1':db1
+    }
+
+grads = backward(Y_train[:5], params, cache)
+for name, value in grads.items():
+    print(name, value.shape)
+
+#cuarto paso - entrenamiento
+def train_step(params, y_true, learning_rate, cache):
+    grads = backward(y_true, params, cache)
+    
+    # Actualización de parámetros usando descenso de gradiente
+    params["w1"] -= learning_rate * grads["dw1"]
+    params["b1"] -= learning_rate * grads["db1"]
+    params["w2"] -= learning_rate * grads["dw2"]
+    params["b2"] -= learning_rate * grads["db2"]
+    
+    return params
+    
+train = train_step(params, Y_train[:5], 0.01, cache)
+for name, value in train.items():
+    print(name, value.shape)
+
+#quinto
+def train_epoch(params, X_train, y_train):
+    probabilities, cache = forward(X_train, params)
+    loss = cross_entropy_lost(probabilities, y_train)
+    params = train_step(params, y_train, 0.01, cache)
+    return params, loss
+    
+params, loss = train_epoch(params, X_train_normalized, Y_train)
+print("loss: ", loss)
+
+#sexto
+def train_model(X_train, Y_train, X_val, Y_val, n_hidden=16, epochs=1000, lr=0.01, seed=42):
+    n_features = X_train.shape[1]
+    n_classes = len(np.unique(Y_train))
+    params = initialize_parameters(n_features, n_hidden, n_classes, seed)
+    
+    history = {"train_loss": [], "val_loss": []}
+    
+    for epoch in range(epochs):
+        # Entrenamiento
+        probs_train, cache_train = forward(X_train, params)
+        loss_train = cross_entropy_lost(probs_train, Y_train)
+        params = train_step(params, Y_train, lr, cache_train)
+        
+        # Validación
+        probs_val, _ = forward(X_val, params)
+        loss_val = cross_entropy_lost(probs_val, Y_val)
+        
+        history["train_loss"].append(loss_train)
+        history["val_loss"].append(loss_val)
+        
+        if epoch % 100 == 0:
+            print(f"Epoch {epoch}: train_loss = {loss_train:.4f}, val_loss = {loss_val:.4f}")
+            
+    return params, history
+
+# Ejecución del entrenamiento completo
+params_final, history = train_model(X_train_normalized, Y_train, X_validation_normalized, Y_validation)
