@@ -1,6 +1,10 @@
 #inferencia: consiste en usar parametros ya existentes para transformar una entrada en una salida
 #Entrenamiento: Modificar esos parametros con base en una senal de error
 import numpy as np
+#graficas
+import matplotlib.pyplot as plt
+import json
+
 #data set base
 base_samples = [
     {
@@ -329,3 +333,107 @@ def train_model(X_train, Y_train, X_val, Y_val, n_hidden=16, epochs=1000, lr=0.0
 
 # Ejecución del entrenamiento completo
 params_final, history = train_model(X_train_normalized, Y_train, X_validation_normalized, Y_validation)
+
+def evaluate_model(params, X_test, Y_test):
+    probs, _ = forward(X_test, params)
+    loss = cross_entropy_lost(probs, Y_test)
+    predictions = probs.argmax(axis=1)
+    accuracy = np.mean(predictions == Y_test)
+    return loss, accuracy
+
+loss_final, accuracy_final = evaluate_model(params_final, X_test_normalized, Y_test)
+print(f"Final Test Loss: {loss_final:.4f}, Final Test Accuracy: {accuracy_final:.4f}")
+
+def graphic(history, X_test_normalized, Y_test):
+    plt.figure(figsize=(12, 4))
+    plt.subplot(1, 2,1)
+    plt.plot(history["train_loss"], label="Train Loss")
+    plt.plot(history["val_loss"], label="Val Loss")
+    plt.title("Curva de Pérdida")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.legend()
+
+    plt.subplot(1, 2, 2)
+    # Visualización de predicciones vs reales en el set de prueba
+    probs_test, _ = forward(X_test_normalized, params_final)
+    y_pred = probs_test.argmax(axis=1)
+    plt.scatter(range(len(Y_test)), Y_test, label="Real", alpha=0.6)
+    plt.scatter(range(len(y_pred)), y_pred, label="Predicho", marker='x')
+    plt.title("Predicciones vs Real (Test)")
+    plt.xlabel("Muestra")
+    plt.ylabel("Clase")
+    plt.legend()
+
+    plt.tight_layout()
+    plt.show()
+#graphic()
+
+def export_model(params, mean, std, filename="test_model_params.npz"):
+    np.savez(filename, w1=params["w1"], b1=params["b1"], w2=params["w2"], b2=params["b2"], mean=mean, std=std)
+    print(f"Modelo exportado exitosamente a {filename}")
+export_model(params_final, mean, std)
+def export_as_json(params, mean, std, filename="test_model_params.json"):
+    model_dict = {
+        "w1": params["w1"].tolist(),
+        "b1": params["b1"].tolist(),
+        "w2": params["w2"].tolist(),
+        "b2": params["b2"].tolist(),
+        "mean": mean.tolist(),
+        "std": std.tolist()
+    }
+    with open(filename, "w") as f:
+        json.dump(model_dict, f)
+    print(f"Modelo exportado exitosamente a {filename}")
+export_as_json(params_final, mean, std)
+
+def load_model(filename="test_model_params.npz"):
+    data = np.load(filename)
+    params = {
+        "w1": data["w1"],
+        "b1": data["b1"],
+        "w2": data["w2"],
+        "b2": data["b2"]
+    }
+    mean = np.array(data["mean"])
+    std = np.array(data["std"])
+    return params, mean, std
+params_loaded, mean_loaded, std_loaded = load_model()
+print("Parámetros cargados:")
+for name, value in params_loaded.items():
+    print(f"{name}: {value.shape}")
+print("Media cargada:", mean_loaded)
+print("Desviación estándar cargada:", std_loaded)
+
+
+def predict_new_sample(features, filename="test_model_params.npz"):
+    # 1. Cargar el modelo y los parámetros de normalización
+    params, mean_loaded, std_loaded = load_model(filename)
+    
+    # 2. Convertir la entrada a un array de NumPy
+    x_input = np.array([features], dtype=np.float32)
+    
+    # 3. NORMALIZACIÓN (CRUCIAL)
+    # Debes usar la media y desviación del entrenamiento, no las del nuevo dato
+    x_normalized = (x_input - mean_loaded) / std_loaded
+    
+    # 4. Ejecutar el Forward (Inferencia)
+    # Reutilizamos tu función forward
+    probabilities, _ = forward(x_normalized, params)
+    
+    # 5. Obtener la clase con mayor probabilidad
+    prediction_index = np.argmax(probabilities)
+    class_name = index_to_class[prediction_index]
+    confidence = probabilities[0][prediction_index] * 100
+    
+    return class_name, confidence
+
+# --- EJEMPLO DE USO ---
+# Supongamos que recibes una lectura nueva de un sensor
+nueva_lectura = [1.5, 20.0, 70.0, 15.0] # Un caso crítico según tus datos
+
+clase, confianza = predict_new_sample(nueva_lectura)
+
+print(f"Resultado de la predicción: {clase}")
+print(f"Confianza: {confianza:.2f}%")
+
