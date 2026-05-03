@@ -107,6 +107,14 @@ index_to_class = {idx:label for label,idx in class_to_index.items()}
 
 # aumentacion de datos: generar datos sinteticos
 def generate_argumented_dataset(base_samples, n_per_class =60, noise=0.12,seed =11):
+    """
+    Aumenta el tamaño del dataset generando muestras sintéticas.
+    Calcula la media y desviación estándar de cada clase y genera nuevos datos 
+    usando una distribución normal alrededor de esa media.
+    
+    Esto es muy útil en IA cuando tenemos pocos datos (como en este caso, solo 10) 
+    para evitar el sobreajuste (overfitting) y darle a la red más ejemplos para aprender.
+    """
     rng = np.random.default_rng(seed)
     grouped = {}
     for sample in base_samples:
@@ -136,6 +144,10 @@ print("Distribucion: " ,{index_to_class[k]: int(np.sum(y==k)) for k in np.unique
 
 #particion train / validation /test
 def split_indices_stratified(y, train_ratio=0.7, validation_ratio=0.15, seed=42):
+    """
+    Divide el dataset en Entrenamiento (Train), Validación (Validation) y Prueba (Test).
+    'Estratificado' significa que mantiene la misma proporción de clases en todos los subconjuntos.
+    """
     rango = np.random.default_rng(seed)
     train_idx, validation_idx, test_idx = [],[],[]
     for cls in np.unique(y):
@@ -176,6 +188,11 @@ print("X_test_normalized shape: ", X_test_normalized)
 #one-hot encoding
 # un vector codigicados con ceros que cambia dependiendo de la clase (ayuda visual)
 def one_hot(y, n_clasess):
+    """
+    Convierte etiquetas enteras (ej. 2) en vectores One-Hot (ej. [0, 0, 1]).
+    Esto es necesario porque la red neuronal en su capa de salida entrega un vector de 
+    probabilidades, y necesitamos compararlo con un formato vectorial.
+    """
     Y = np.zeros((len(y), n_clasess), dtype=np.float32)
     Y[np.arange(len(y)), y] = 1.0
     return Y
@@ -190,10 +207,20 @@ print("y_test_one_hot: ", y_test_one_hot)
 
 #funciones de activacion
 def relu(z):
+    """
+    Función de activación Rectified Linear Unit (ReLU).
+    Convierte los valores negativos a 0 y deja los positivos igual. 
+    Añade 'no linealidad' a la red, permitiéndole aprender patrones complejos.
+    """
     return np.maximum(0,z)
 def relu_prime(z):
+    """Derivada de ReLU: Retorna 1 si z > 0, de lo contrario 0. Se usa en el Backpropagation."""
     return (z>0).astype(np.float32)
 def softmax(logits):
+    """
+    Función Softmax: Convierte las salidas puras (logits) de la última capa en probabilidades.
+    Todos los valores resultantes estarán entre 0 y 1, y su suma será exactamente 1.
+    """
     shifted = logits - logits.max(axis=1, keepdims=True)
     exp = np.exp(shifted)
     return exp / exp.sum(axis=1, keepdims=True)
@@ -208,6 +235,11 @@ print("Suma filas softmax: ", softmax(logits_prueba).sum(axis=1) )
 
 #inicializacion de parametros
 def initialize_parameters(n_features, n_hidden, n_classes, seed=42):
+    """
+    Inicializa los pesos (W) aleatoriamente y los sesgos (b) en ceros para las dos capas.
+    Es importante iniciar los pesos con valores pequeños y aleatorios para romper la 
+    simetría (si todos fueran iguales, todas las neuronas aprenderían lo mismo).
+    """
     range = np.random.default_rng(seed)
     w1 = range.normal(0, np.sqrt(2/n_features), size=(n_features, n_hidden))
     b1 = np.zeros((1, n_hidden))
@@ -221,12 +253,21 @@ for name, value in params.items():
 
 #propagacion hacia adelante
 def forward(x, params):
+    """
+    Inferencia o Propagación hacia adelante (Forward Pass).
+    Toma los datos de entrada 'x' y los pasa por la Capa 1 y la Capa 2.
+    Devuelve las probabilidades predichas y una memoria 'cache' con los 
+    valores intermedios, que serán vitales después para el Backpropagation.
+    """
     w1,b1,w2,b2 = params["w1"], params["b1"], params["w2"], params["b2"]
+    # Capa oculta 1
     z1 = x @ w1 + b1
     a1 = relu(z1)
+    # Capa de salida 2
     logits = a1 @ w2 + b2
     probabilities = softmax(logits)
     cache = {
+        # Guardamos esto para poder derivar en el backward
         'X':x,
         'z1':z1,
         'a1':a1,
@@ -241,8 +282,14 @@ print("probs ejemplo: ", probs[0])
 
 #segundo paso - calculo de perdidas (cross entropy)
 def cross_entropy_lost(probabilities, y_true):
+    """
+    Calcula el error del modelo usando Entropía Cruzada Categórica.
+    Mide qué tan lejos están las probabilidades predichas de las etiquetas reales.
+    Buscamos minimizar este valor durante el entrenamiento.
+    """
     n = len(y_true)
     selected = probabilities[np.arange(n), y_true]
+    # Se suma 1e-9 (un número muy pequeño) para evitar hacer logaritmo de cero.
     return np.mean(np.log(selected + 1e-9))
 
 loss_initial = cross_entropy_lost(probs, Y_train[:5])
@@ -251,6 +298,12 @@ print("perdida inicial: ", loss_initial)
 #retro propagacion paso a paso
 
 def backward(y_true, params, cache):
+    """
+    Propagación hacia atrás (Backpropagation).
+    Usando cálculo diferencial (Regla de la cadena), determina cómo debemos 
+    ajustar cada peso (W) y sesgo (b) para reducir la pérdida.
+    Retorna los gradientes (dw, db) que indican la dirección y magnitud del cambio.
+    """
     X = cache['X']
     a1 = cache['a1']
     z1 = cache['z1']
@@ -258,12 +311,15 @@ def backward(y_true, params, cache):
     probabilities = cache['probabilities']
     w2 = params['w2']
     n = X.shape[0]
+    
+    # Gradiente de la capa de salida combinada con Softmax y Cross-Entropy
     dlogits = probabilities.copy()
     dlogits[np.arange(n), y_true] -= 1.0
     dlogits /= n
 
-    dw2 = a1.T @ dlogits
-    db2 = dlogits.sum(axis=0, keepdims=True)
+    dw2 = a1.T @ dlogits # Gradiente de los pesos Capa 2
+    db2 = dlogits.sum(axis=0, keepdims=True) # Gradiente de sesgos Capa 2
+    # Retropropagamos a la capa 1 aplicando la derivada de ReLU
     da1 = dlogits @ w2.T
     dz1 = da1 * relu_prime(z1)
     dw1 = X.T @ dz1
@@ -281,6 +337,11 @@ for name, value in grads.items():
 
 #cuarto paso - entrenamiento
 def train_step(params, y_true, learning_rate, cache):
+    """
+    Paso de actualización (Descenso del gradiente).
+    Toma los gradientes calculados en el backward y ajusta ligeramente 
+    los parámetros restándolos, multiplicados por la tasa de aprendizaje.
+    """
     grads = backward(y_true, params, cache)
     
     # Actualización de parámetros usando descenso de gradiente
@@ -297,6 +358,10 @@ for name, value in train.items():
 
 #quinto
 def train_epoch(params, X_train, y_train):
+    """
+    Ejecuta un ciclo completo (Época) con todo el conjunto de datos de entrenamiento:
+    Forward -> Cálculo del error -> Train Step (Backward + Actualización).
+    """
     probabilities, cache = forward(X_train, params)
     loss = cross_entropy_lost(probabilities, y_train)
     params = train_step(params, y_train, 0.01, cache)
@@ -307,6 +372,12 @@ print("loss: ", loss)
 
 #sexto
 def train_model(X_train, Y_train, X_val, Y_val, n_hidden=16, epochs=1000, lr=0.01, seed=42):
+    """
+    Ciclo principal de entrenamiento.
+    Repite el proceso de la red a lo largo de varias 'épocas' (epochs).
+    También valida iterativamente el modelo contra el conjunto de validación
+    para observar cómo mejora sin memorizar los datos.
+    """
     n_features = X_train.shape[1]
     n_classes = len(np.unique(Y_train))
     params = initialize_parameters(n_features, n_hidden, n_classes, seed)
@@ -335,6 +406,11 @@ def train_model(X_train, Y_train, X_val, Y_val, n_hidden=16, epochs=1000, lr=0.0
 params_final, history = train_model(X_train_normalized, Y_train, X_validation_normalized, Y_validation)
 
 def evaluate_model(params, X_test, Y_test):
+    """
+    Evalúa el desempeño final del modelo con los datos de Prueba (Test), 
+    que el modelo jamás ha visto. 
+    Calcula la precisión (accuracy) total de sus predicciones.
+    """
     probs, _ = forward(X_test, params)
     loss = cross_entropy_lost(probs, Y_test)
     predictions = probs.argmax(axis=1)
@@ -407,6 +483,10 @@ print("Desviación estándar cargada:", std_loaded)
 
 
 def predict_new_sample(features, filename="test_model_params.npz"):
+    """
+    Inferencia final: toma una muestra completamente nueva de un sensor,
+    la normaliza bajo los mismos criterios de entrenamiento y produce una predicción.
+    """
     # 1. Cargar el modelo y los parámetros de normalización
     params, mean_loaded, std_loaded = load_model(filename)
     
@@ -437,3 +517,15 @@ clase, confianza = predict_new_sample(nueva_lectura)
 print(f"Resultado de la predicción: {clase}")
 print(f"Confianza: {confianza:.2f}%")
 
+nueva_lectura = [0.89, 92.34, 115.1, 88.42] 
+
+clase, confianza = predict_new_sample(nueva_lectura)
+
+print(f"Resultado de la predicción: {clase}")
+print(f"Confianza: {confianza:.2f}%")
+nueva_lectura_normal = [0.31, 0.98, 3.05, 1.15]
+
+clase, confianza = predict_new_sample(nueva_lectura)
+
+print(f"Resultado de la predicción: {clase}")
+print(f"Confianza: {confianza:.2f}%")
