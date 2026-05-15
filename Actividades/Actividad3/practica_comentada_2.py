@@ -27,20 +27,50 @@ print(f"Muestra[{index_aleatoreo+1}]: \nX: {x[index_aleatoreo]}\nY: {y[index_ale
 
 #funciones de activacion
 #reLu
-def reLu(x):
-    return np.maximum(0,x)
-#softmax
-def softmax(x):
-    x_shifted = x - np.max(x)
-    exp_values = np.exp(x_shifted)
-    return exp_values / np.sum(exp_values)
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+def reLu(z):
+    return np.maximum(0,z)
+
+def softmax(logits):
+    """
+    Función Softmax: Convierte las salidas puras (logits) en probabilidades.
+    Funciona tanto para un solo vector (1D) como para un lote de vectores (2D).
+    """
+    if logits.ndim == 1:
+        # Para un solo vector (inferencia de una muestra)
+        shifted = logits - np.max(logits)
+        exp = np.exp(shifted)
+        return exp / np.sum(exp)
+    # Para un lote de vectores (matriz 2D, entrenamiento o inferencia de lote)
+    shifted = logits - np.max(logits, axis=1, keepdims=True)
+    exp = np.exp(shifted)
+    return exp / np.sum(exp, axis=1, keepdims=True)
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
 
 #probando funciones
 print("reLu: ", reLu(x[index_aleatoreo]))
 print("softmax: ", softmax(x[index_aleatoreo]))
 print("sigmoid: ", sigmoid(x[index_aleatoreo]))
+
+# --- Verificación de Funciones de Activación (Punto 3 del Protocolo) ---
+print("\n--- Verificación de Funciones de Activación ---")
+test_values = np.array([-2.0, -0.5, 0.0, 1.2, 3.4])
+relu_output = reLu(test_values)
+sigmoid_output = sigmoid(test_values)
+softmax_output = softmax(test_values)
+
+print(f"Valores de prueba: {test_values}")
+print(f"Salida ReLU: {relu_output}")
+print(f"¿ReLU >= 0?: {np.all(relu_output >= 0)}")
+
+print(f"Salida Sigmoid: {sigmoid_output}")
+print(f"¿Sigmoid entre 0 y 1?: {np.all((sigmoid_output > 0) & (sigmoid_output < 1))}")
+
+print(f"Salida Softmax: {softmax_output}")
+print(f"Suma de Softmax: {np.sum(softmax_output):.4f}")
+print(f"¿Suma de Softmax es 1?: {np.isclose(np.sum(softmax_output), 1.0)}")
+print("-------------------------------------------------")
 
 #muestra a trabajar 
 muestra_x = x[index_aleatoreo]
@@ -116,9 +146,44 @@ print("logits shape: ", logits.shape)
 #transformamos los logits en probabilidades
 probabilities = softmax(logits)
 print("probabilities shape: ", probabilities.shape)
-print("probabilities: ", probabilities)
+print("probabilities (primeras 5): \n", probabilities[:5])
+print("Suma de probabilidades por fila (debe ser 1): ", probabilities.sum(axis=1))
 #obtenemos la clase predicha
-y_pred = np.argmax(probabilities)
+y_pred = np.argmax(probabilities, axis=1)
 print("y_pred: ", y_pred)
 
+# --- Comparación de Vectorización (Punto 5 del Protocolo) ---
+import time
 
+def dense_forward_iterative(X, w, b, activation=None):
+    """Versión iterativa (lenta) de una capa densa."""
+    outputs = []
+    for x_sample in X: # Iterar sobre cada muestra
+        z = np.dot(x_sample, w) + b
+        if activation is None:
+            outputs.append(z)
+        else:
+            outputs.append(activation(z))
+    return np.array(outputs)
+
+print("\n--- Comparando Rendimiento: Iterativo vs. Vectorizado ---")
+
+# Medir tiempo de la versión iterativa
+start_iter = time.perf_counter()
+for _ in range(1000):
+    Z1_iter = dense_forward_iterative(x, w1, b1)
+end_iter = time.perf_counter()
+time_iter = end_iter - start_iter
+
+# Medir tiempo de la versión vectorizada
+start_vect = time.perf_counter()
+for _ in range(1000):
+    Z1_vect = dense_forward_batch(x, w1, b1)
+end_vect = time.perf_counter()
+time_vect = end_vect - start_vect
+
+print(f"Resultados numéricamente iguales: {np.allclose(Z1_iter, Z1_vect)}")
+print(f"Tiempo iterativo (1000 ejecuciones): {time_iter:.6f} segundos")
+print(f"Tiempo vectorizado (1000 ejecuciones): {time_vect:.6f} segundos")
+print(f"Factor de aceleración (Speedup): {time_iter / time_vect:.2f}x más rápido")
+print("-------------------------------------------------")
