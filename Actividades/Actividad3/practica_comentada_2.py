@@ -1,14 +1,14 @@
 import numpy as np
 x = np.array([
-  [7,10,7,2],
-  [10,12,10,5],
-  [6,10,6,5],
-  [5,5,5,2],
-  [8,10,7,2],
-  [10,12,10,5],
-  [6,10,6,5],
-  [5,5,5,2],
-  [10,12,10,5]
+    [7,10,7,2],
+    [10,12,10,5],
+    [6,10,6,5],
+    [5,5,5,2],
+    [8,10,7,2],
+    [10,12,10,5],
+    [6,10,6,5],
+    [5,5,5,2],
+    [10,12,10,5]
 ],np.float32)
 y = np.array([1,0,1,2,1,0,1,2,0], np.float32)
 class_names = {0:'critical', 1:'warning', 2:'normal'}
@@ -19,7 +19,7 @@ print("Dataset x:\n",x,"\nVector Y:\n" ,y,'\nClases:\n',class_names,"\nDecodific
 print("X shape: ", x.shape)
 print("Y shape: ", y.shape)
 print("Compatibilidad de dimensiones: ", x.shape[0] == y.shape[0])
-
+print(type(x), type(y) )
 
 # explorar una muestra aleatoria [de 0 hasta longitud de la matriz (X)]
 index_aleatoreo = np.random.randint(0,x.shape[0])
@@ -28,6 +28,10 @@ print(f"Muestra[{index_aleatoreo+1}]: \nX: {x[index_aleatoreo]}\nY: {y[index_ale
 #funciones de activacion
 #reLu
 def reLu(z):
+    """
+    Función de activación ReLU (Rectified Linear Unit).
+    Devuelve el mismo valor si es positivo, y 0 si es negativo.
+    """
     return np.maximum(0,z)
 
 def softmax(logits):
@@ -46,14 +50,20 @@ def softmax(logits):
     return exp / np.sum(exp, axis=1, keepdims=True)
 
 def sigmoid(z):
+    """
+    Función de activación Sigmoide.
+    Transforma cualquier valor real en un rango entre 0 y 1.
+    Ideal para representar probabilidades en problemas binarios.
+    
+    """
     return 1 / (1 + np.exp(-z))
 
-#probando funciones
+#probando funciones con la muestra aleatorea obtenida anteriormente
 print("reLu: ", reLu(x[index_aleatoreo]))
 print("softmax: ", softmax(x[index_aleatoreo]))
 print("sigmoid: ", sigmoid(x[index_aleatoreo]))
 
-# --- Verificación de Funciones de Activación (Punto 3 del Protocolo) ---
+# --- Verificación de Funciones de Activación con valores de prueba y evaluaciones de la salida ---
 print("\n--- Verificación de Funciones de Activación ---")
 test_values = np.array([-2.0, -0.5, 0.0, 1.2, 3.4])
 relu_output = reLu(test_values)
@@ -77,7 +87,7 @@ muestra_x = x[index_aleatoreo]
 muestra_y = y[index_aleatoreo]
 
 
-#validacion de formas de matrices
+#validacion de formas de matrices se hizo una funcion reutilizable para que pueda ponerlos en las operaciones
 def validate_dense_shapes(X,W,b):
     n_samples, n_features = X.shape
     n_features_W1, n_outpues = W.shape
@@ -115,7 +125,8 @@ b1 = np.array([0.1, -0.2, 0.05], np.float32)
 b2 = np.array([0.05, -0.1, 0.2], np.float32)
 print("b1 shape: ", b1.shape)
 print("b2 shape: ", b2.shape)
-#funcion para neurona con activacion toma x y realiza el producto punto con w luego suma el sesgo 
+#funcion para neurona con activacion toma x y realiza el producto punto 
+# con w luego suma el sesgo  si recibe el parametro de una funcion de activacion la aplica adicionalmente
 def neurona_forward_with_activation(x,w,b, activation = None):
     y = np.dot(x,w) + b
     if activation is None:
@@ -185,5 +196,5 @@ time_vect = end_vect - start_vect
 print(f"Resultados numéricamente iguales: {np.allclose(Z1_iter, Z1_vect)}")
 print(f"Tiempo iterativo (1000 ejecuciones): {time_iter:.6f} segundos")
 print(f"Tiempo vectorizado (1000 ejecuciones): {time_vect:.6f} segundos")
-print(f"Factor de aceleración (Speedup): {time_iter / time_vect:.2f}x más rápido")
+print(f"Factor de aceleración: {time_iter / time_vect:.2f}x más rápido")
 print("-------------------------------------------------")
