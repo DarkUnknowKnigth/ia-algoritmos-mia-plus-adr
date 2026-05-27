@@ -85,7 +85,6 @@ def dense_forward_iterative(X_batch, w, b, activation=None):
         outputs.append(output_sample)
     return np.array(outputs)
 
-print("Funciones base (reLu, softmax, dense_forward_single, dense_forward_batch, dense_forward_iterative) definidas.")
 print("-" * 50, "\n")
 
 
