@@ -384,9 +384,10 @@ def main():
     params_trained, history = train_network(
         X_train_n, y_train, X_validation_n, y_validation,n_hidden=8,lr=0.03,epochs=600, seed=42
     )
-    y_pred_train = predict(X_train_n, params_trained)[0]
-    y_pred_val = predict(X_validation_n, params_trained)[0]
-    y_pred_test = predict(X_test_n, params_trained)[0]
+    #evaluacion de train, validation y test
+    y_pred_train = predict(X_train_n, params_trained)
+    y_pred_val = predict(X_validation_n, params_trained)
+    y_pred_test, probs_test = predict(X_test_n, params_trained)
 
     print("Final metrics------")
     print("Train accuracy: ", accuracy_score(y_train, y_pred_train))
@@ -399,6 +400,17 @@ def main():
     print(cm)
 
     print("First predictions (test)")
+    for i in range(min(10, len(y_test))):
+      print(
+          ids[test_idx[i]],
+          "real=",index_to_class[y_test[test_idx[i]]],
+          "predicted=",index_to_class[y_pred_test[i]],
+          "probs=", np.round(probs_test[i],3)
+      )
+    errors = error_report(ids[test_idx], y_test, y_pred_test, probs_test, index_to_class)
+    print("Errores detectados:", len(errors))
+    for item in errors[:5]:
+      print(item)
 
 
 
