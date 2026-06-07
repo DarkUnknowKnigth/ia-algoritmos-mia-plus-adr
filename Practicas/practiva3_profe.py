@@ -3,87 +3,87 @@ import matplotlib.pyplot as plt
 
 # Dataset
 base_samples = [
-  {
-    "id": "sample_001",
-    "features": [0.45, 1.12, 2.89, 0.76],
-    "label": "normal",
-    "metadata": {
-      "source": "sensor_a",
-      "quality": "high"
+    {
+        "id": "sample_001",
+        "features": [0.45, 1.12, 2.89, 0.76],
+        "label": "normal",
+        "metadata": {
+        "source": "sensor_a",
+        "quality": "high"
+        }
+    },
+    {
+        "id": "sample_002",
+        "features": [1.24, 5.67, 12.4, 1.2],
+        "label": "warning",
+        "metadata": {
+            "source": "sensor_b",
+            "quality": "low"
+        }
+    },
+    {
+        "id": "sample_003",
+        "features": [0.89, 92.34, 115.1, 88.42],
+        "label": "critical",
+        "metadata": {
+            "source": "sensor_c",
+            "quality": "high"
+        }
+    },
+    {
+        "id": "sample_004",
+        "features": [0.31, 0.98, 3.05, 1.15],
+        "label": "normal",
+        "metadata": {
+            "source": "sensor_a",
+            "quality": "high"
+        }
+    },
+    {
+        "id": "sample_005",
+        "features": [2.15, 8.42, 15.8, 6.92],
+        "label": "warning",
+        "metadata": {
+            "source": "sensor_b",
+            "quality": "low"
+        }
+    },
+    {
+        "id": "sample_006",
+        "features": [1.02, 78.12, 95.5, 102.3],
+        "label": "critical",
+        "metadata": {
+            "source": "sensor_c",
+            "quality": "high"
+        }
+    },
+    {
+        "id": "sample_007",
+        "features": [0.55, 1.25, 2.70, 0.85],
+        "label": "normal",
+        "metadata": {
+            "source": "sensor_a",
+            "quality": "high"
+        }
+    },
+    {
+        "id": "sample_008",
+        "features": [1.80, 6.10, 13.5, 2.1],
+        "label": "warning",
+        "metadata": {
+            "source": "sensor_b",
+            "quality": "low"
+        }
+    },
+    {
+        "id": "sample_009",
+        "features": [1.15, 85.20, 105.4, 95.10],
+        "label": "critical",
+        "metadata": {
+            "source": "sensor_c",
+            "quality": "high"
+        }
     }
-  },
-  {
-      "id": "sample_002",
-      "features": [1.24, 5.67, 12.4, 1.2],
-      "label": "warning",
-      "metadata": {
-        "source": "sensor_b",
-        "quality": "low"
-      }
-  },
-  {
-      "id": "sample_003",
-      "features": [0.89, 92.34, 115.1, 88.42],
-      "label": "critical",
-      "metadata": {
-        "source": "sensor_c",
-        "quality": "high"
-      }
-  },
-  {
-      "id": "sample_004",
-      "features": [0.31, 0.98, 3.05, 1.15],
-      "label": "normal",
-      "metadata": {
-        "source": "sensor_a",
-        "quality": "high"
-      }
-  },
-  {
-      "id": "sample_005",
-      "features": [2.15, 8.42, 15.8, 6.92],
-      "label": "warning",
-      "metadata": {
-        "source": "sensor_b",
-        "quality": "low"
-      }
-  },
-  {
-      "id": "sample_006",
-      "features": [1.02, 78.12, 95.5, 102.3],
-      "label": "critical",
-      "metadata": {
-        "source": "sensor_c",
-        "quality": "high"
-      }
-  },
-  {
-      "id": "sample_007",
-      "features": [0.55, 1.25, 2.70, 0.85],
-      "label": "normal",
-      "metadata": {
-        "source": "sensor_a",
-        "quality": "high"
-      }
-  },
-  {
-      "id": "sample_008",
-      "features": [1.80, 6.10, 13.5, 2.1],
-      "label": "warning",
-      "metadata": {
-        "source": "sensor_b",
-        "quality": "low"
-      }
-  },
-  {
-      "id": "sample_009",
-      "features": [1.15, 85.20, 105.4, 95.10],
-      "label": "critical",
-      "metadata": {
-        "source": "sensor_c",
-        "quality": "high"
-      }
-  }
 ]
 class_to_index = {
     'critical': 0,
@@ -207,7 +207,6 @@ def backward(y_true, params, cache):
     X = cache['X']
     A1 = cache['A1']
     Z1 = cache['Z1']
-    logits = cache['logits']
     probs = cache['probs']
     w2 = params['w2']
     n = X.shape[0]
@@ -215,11 +214,11 @@ def backward(y_true, params, cache):
     dlogits[np.arange(n), y_true] -=  1
     dlogits /= n
     dw2 = A1.T @ dlogits
-    db2 = dlogits.sum(axis=0, keepdims=True)
+    db2 = np.sum(dlogits, axis=0, keepdims=True)
     da1 = dlogits @ w2.T
     dz1 = da1 * relu_derivative(Z1)
     dw1 = X.T @ dz1
-    db1 = dz1.sum(axis=0, keepdims=True)
+    db1 = np.sum(dz1,axis=0, keepdims=True)
     return {
         'dw2':dw2,
         'db2':db2,
@@ -230,8 +229,8 @@ def backward(y_true, params, cache):
 def numerical_gradient_check(x_small, y_small, params,param_name="w1", index= (0,0), epsilon=1e-7):
     params_plus = {key: value.copy() for key, value in params.items()}
     params_minus = {key: value.copy() for key, value in params.items()}
-    params_plus[index[0]][index[1]][index[2]] += epsilon
-    params_minus[index[0]][index[1]][index[2]] -= epsilon
+    params_plus[param_name][index] += epsilon
+    params_minus[param_name][index] -= epsilon
     loss_plus = cross_entropy_loss(forward(x_small, params_plus)[0], y_small)
     loss_minus = cross_entropy_loss(forward(x_small, params_minus)[0], y_small)
     numerical = (loss_plus - loss_minus) / (2 * epsilon)
@@ -245,7 +244,7 @@ def update_parameters(params, grads, lerning_rate):
     return params
 def predict(x, params):
     probs, _ = forward(x, params)
-    return probs.argmax(axis=1), probs
+    return np.argmax(probs, axis=1), probs
 def accuracy_score(y_true, y_pred):
     return np.mean(y_true == y_pred)
 def confusion_matrix_np(y_true, y_pred, n_classes):
@@ -343,7 +342,8 @@ def plot_history(history):
 # Programa principal
 def main():
     print("---- Practiva 3: Red neuronal desde cero ----")
-    X, y, ids = generate_argumented_dataset(base_samples)
+    #generacion del dataset
+    X, y, ids = generate_argumented_dataset(base_samples, n_per_class=60, noise=0.12, seed=42)
     print("X shape: ", X.shape)
     print("y shape: ", y.shape)
     print("Distribution: ", {index_to_class[k]: int(np.sum(y==k)) for k in np.unique(y)})
@@ -373,20 +373,29 @@ def main():
     print("sum softmax: ", probs_demo.sum(axis=1) )
     
     #verificacion de shapes e inicializacion
-    params_demo = initialize_parameters(n_features=3, n_hidden=4, n_classes=2, seed=42)
+    params_demo = initialize_parameters(n_features=4, n_hidden=8, n_classes=3, seed=42)
     for name, value in params_demo.items():
         print(f"{name}: {value.shape}")
+
     #gradient checking
-    num, ana, diff = numerical_gradient_check(X_train_n[:5], y_train[:5], params_demo)
-    print(f"Gradient check[0,0] -> numeric = {num:.8f}, analitic={ana:.8f}, diference={diff:.8f}")
+    num, ana, diff = numerical_gradient_check(X_train_n[:10], y_train[:10], params_demo)
+    print(f"Gradient check[0,0] -> numeric = {num:.8f}, analitic={ana:.8f}, diference={diff:.8e}")
     
     #entrenamiento
     params_trained, history = train_network(
-        X_train_n, y_train, X_validation_n, y_validation,n_hidden=8,lr=0.03,epochs=600, seed=42
+        X_train_n, 
+        y_train, 
+        X_validation_n, 
+        y_validation,
+        n_hidden=8,
+        lr=0.03,
+        epochs=600, 
+        seed=42
     )
+
     #evaluacion de train, validation y test
-    y_pred_train = predict(X_train_n, params_trained)
-    y_pred_val = predict(X_validation_n, params_trained)
+    y_pred_train, _ = predict(X_train_n, params_trained)
+    y_pred_val, _ = predict(X_validation_n, params_trained)
     y_pred_test, probs_test = predict(X_test_n, params_trained)
 
     print("Final metrics------")
@@ -394,24 +403,62 @@ def main():
     print("Validation accuracy: ", accuracy_score(y_validation, y_pred_val))
     print("Test accuracy: ", accuracy_score(y_test, y_pred_test))
 
-    cm = confusion_matrix_np(y_test, y_pred_test, len(class_to_index))
+    cm = confusion_matrix_np(y_test, y_pred_test, n_classes=3)
     print("Matriz de confusion test")
     print("Rows = real class; columns = predicted class")
     print(cm)
 
     print("First predictions (test)")
     for i in range(min(10, len(y_test))):
-      print(
-          ids[test_idx[i]],
-          "real=",index_to_class[y_test[test_idx[i]]],
-          "predicted=",index_to_class[y_pred_test[i]],
-          "probs=", np.round(probs_test[i],3)
-      )
-    errors = error_report(ids[test_idx], y_test, y_pred_test, probs_test, index_to_class)
+        print(
+            ids[test_idx[i]],
+            "real=",index_to_class[int(y_test[i])],
+            "predicted=",index_to_class[int(y_pred_test[i])],
+            "probs=", np.round(probs_test[i],3)
+        )
+    errors = error_report([ids[i] for i in test_idx], y_test, y_pred_test, probs_test, index_to_class)
     print("Errores detectados:", len(errors))
     for item in errors[:5]:
-      print(item)
-
-
-
+        print(item)
     
+    #experimentos guiados.
+    experiments = [
+        {"n_hidden": 4, "lr":0.01},
+        {"n_hidden": 8, "lr":0.03},
+        {"n_hidden": 12, "lr":0.05},
+    ]
+    results = []
+    print("\n --- Experimentos guiados")
+    for experiment in experiments:
+        p, h = train_network(
+            X_train_n, 
+            y_train, 
+            X_validation_n, 
+            y_validation,
+            n_hidden=experiment["n_hidden"], 
+            lr=experiment["lr"], 
+            epochs=400, 
+            seed=42
+        )
+        y_pred_val, _ = predict(X_validation_n, p)
+        row = {
+            "n_hidden": experiment["n_hidden"],
+            "lr": experiment["lr"],
+            "val_acc": accuracy_score(y_validation, y_pred_val),
+            "val_loss": h["val_loss"][-1]
+        }
+        results.append(row)
+        print(row)
+    #guardado e inferencia nueva.
+    save_parameters(params_trained, mean, std)
+    params_loaded, mean_loaded, std_loaded = load_parameters()
+    label, prob = predict_single([0.45, 1.12, 2.89, 0.2], params_loaded, mean_loaded, std_loaded)
+    print("\n Inferencia de muestra nueva:")
+    print("Clase predicha: ", label)
+    print("Probabilidades: ", np.round(prob, 4))
+
+    #grafica
+    plot_history(history)
+
+if __name__ == "__main__":
+    main()
