@@ -44,8 +44,8 @@ print("b2 shape:", b2.shape)
 print("-" * 50, "\n")
 
 
-# --- REFACTORIZACIÓN DE FUNCIONES BASE ---
-print("--- REFACTORIZACIÓN DE FUNCIONES BASE ---")
+# --- FUNCIONES DE ACTIVACION ---
+print("--- CREANDO FUNCIONES DE ACTIVACION ---")
 
 def reLu(z):
     """Función de activación ReLU."""
@@ -61,21 +61,23 @@ def softmax(logits):
     exps = np.exp(logits - np.max(logits, axis=1, keepdims=True))
     return exps / np.sum(exps, axis=1, keepdims=True)
 
+# --- FUNCIONES DE DE CAPA ---
+print("--- CREANDO FUNCIONES DE DE CAPA ---")
 def dense_forward_single(x_sample, w, b, activation=None):
-    """Propagación hacia adelante para una ÚNICA muestra (operación vectorial)."""
+    """Propagación hacia adelante para una muestra (operación vectorial)."""
     z = np.dot(x_sample, w) + b
     if activation:
         return activation(z)
     return z
 
 def dense_forward_batch(X_batch, w, b, activation=None):
-    """Propagación hacia adelante para un LOTE de muestras (operación matricial)."""
+    """Propagación hacia adelante para un lote de muestras (operación matricial)."""
     z = X_batch @ w + b
     if activation:
         return activation(z)
     return z
 
-# Corrección de la versión iterativa
+# versión iterativa
 def dense_forward_iterative(X_batch, w, b, activation=None):
     """Versión iterativa (lenta) de una capa densa."""
     outputs = []
@@ -159,7 +161,7 @@ try:
     dense_forward_batch(x, W_error, b1)
 except ValueError as e:
     print(f"Error capturado de NumPy: {e}")
-    print("Explicación: El error ocurre porque para la multiplicación matricial (X @ W), el número de columnas de X (features) debe ser igual al número de filas de W. Aquí, 4 != 5.")
+    print(" El error ocurre porque para la multiplicación matricial (X @ W), el número de columnas de X (features) debe ser igual al número de filas de W. Aquí, 4 != 5.")
 
 # Error 2: Sesgo con longitud incorrecta (Broadcasting)
 print("\n--> Error 2: Vector de sesgo (b) con longitud incorrecta")
@@ -171,7 +173,7 @@ try:
     result = z1 + b_error
 except ValueError as e:
     print(f"Error capturado de NumPy: {e}")
-    print("Explicación: El error ocurre por las reglas de 'broadcasting' de NumPy. Al sumar una matriz (9, 3) y un vector (5,), NumPy no puede 'estirar' el vector para que coincida con las columnas de la matriz (3 != 5).")
+    print(" El error ocurre por las reglas de 'broadcasting' de NumPy. Al sumar una matriz (9, 3) y un vector (5,), NumPy no puede 'estirar' el vector para que coincida con las columnas de la matriz (3 != 5).")
 
 # Error 3: Softmax sobre eje equivocado
 print("\n--> Error 3: Softmax aplicado sobre el eje incorrecto")
@@ -190,7 +192,7 @@ try:
     print(f"Suma de probabilidades de la primera muestra (fila 0): {sum_primera_fila:.4f}")
     if not np.isclose(sum_primera_fila, 1.0):
         print("Resultado: La suma de las probabilidades para una muestra individual ya no es 1.0.")
-        print("Explicación: Al usar axis=0, las probabilidades se calculan a lo largo de las columnas, no de las filas. Esto significa que cada columna suma 1, pero las filas (que representan las probabilidades de clase para cada muestra) no. Esto arruina la interpretación probabilística para la clasificación multiclase.")
+        print("Al usar axis=0, las probabilidades se calculan a lo largo de las columnas, no de las filas. Esto significa que cada columna suma 1, pero las filas (que representan las probabilidades de clase para cada muestra) no. Esto arruina la interpretación probabilística para la clasificación multiclase.")
 except Exception as e:
     print(f"Ocurrió un error inesperado: {e}")
 print("-" * 50, "\n")
