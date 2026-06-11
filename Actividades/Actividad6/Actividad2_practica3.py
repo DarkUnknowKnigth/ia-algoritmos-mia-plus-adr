@@ -472,9 +472,10 @@ def main():
     
     # 9. Experimentos guiados para encontrar buenos hiperparámetros
     experiments = [
-        {"n_hidden": 4, "lr":0.01, "epochs": 300, "seed": np.random.randint(1000)},
-        {"n_hidden": 8, "lr":0.03,"epochs": 200, "seed": np.random.randint(1000)},
-        {"n_hidden": 12, "lr":0.05,"epochs": 100, "seed": np.random.randint(1000)},
+        {"n_hidden": 8, "lr":0.003, "epochs": 600, "seed": np.random.randint(1000)},
+        {"n_hidden": 8, "lr":0.03, "epochs": 600, "seed": np.random.randint(1000)},
+        {"n_hidden": 8, "lr":0.3, "epochs": 600, "seed": np.random.randint(1000)},
+        {"n_hidden": 16, "lr":0.03, "epochs": 600, "seed": np.random.randint(1000)},
     ]
     results = []
     print("\n --- Experimentos guiados")
