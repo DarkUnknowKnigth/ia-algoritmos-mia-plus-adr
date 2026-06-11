@@ -1,0 +1,201 @@
+sample_id,fecha_medicion,vehiculos_hora,velocidad_promedio_kmh,densidad_vehicular,tiempo_espera_s,estado,crucero,zona,calidad_medicion,observacion
+TRA_001,2026-02-13,233.69,49.35,9.34,22.82,NORMAL,Cruce_D,oriente,low,hora pico
+TRA_002,2026-02-13,552.29,NA,47.23, 96.62 ,Critical,Cruce_C,sur,HIGH,lluvia
+TRA_003,2026-02-12,348.37,23.25,22.26,,Warning,Cruce B,sur,media,lluvia
+TRA_004,2026-02-10,556.54,7.41,37.92, 144.25 ,critical,Cruce_C,centro,baja,obra cercana
+TRA_005,2026-03-01, 230.4 ,29.43,9.74,,Normal,Cruce_D,oriente,low,
+TRA_006,2026-03-01,193.71,, 19.29 ,17.02,NORMAL,Cruce_A,norte,low,
+TRA_007,2026-02-09,153.96,N/A,17.11,24.38,normal,cruce_a,poniente,baja,
+TRA_008,,406.69,16.0,32.62,46.3,warning,Cruce_D,centro,HIGH,obra cercana
+TRA_009,2026-02-14,849.24,"15,08",66.87, 178.8 ,Critical,Cruce_C,oriente,alta,
+TRA_010,2026-02-18,174.36,35.75,16.46,17.17,NORMAL,Cruce_B,centro,media,
+TRA_011,2026-02-27,670.04,6.46,48.3,115.11,Critical,Cruce_C,norte,media,
+TRA_012,,812.14,12.31,56.14,155.48,Critical,Cruce_C,oriente,HIGH,hora pico
+TRA_013,2026-02-06, 284.79 ,47.58,"16,35",28.98,normal,Cruce_D,oriente,media,lluvia
+TRA_014,2026-02-07,393.21,22.75,18.12,73.95,warning,Cruce_A,oriente,alta,sin novedad
+TRA_015,2026-02-08,195.28, 48.09 ,17.23,29.0,NORMAL,Cruce_B,centro,media,obra cercana
+TRA_016,2026-02-15,298.38,20.15, 26.79 ,65.24,warn,Cruce_B,norte,baja,sin novedad
+TRA_017,2026-02-15,319.31,,,53.12,warning,Cruce_D,sur,baja,lluvia
+TRA_018,2026-02-22,,16.92,30.82,70.01,warn,Cruce_D,centro,media,hora pico
+TRA_019,2026-02-22,778.83,13.16,69.64,122.33,Critical,Cruce_A,poniente,alta,obra cercana
+TRA_020,2026-02-10,545.0,6.1, 46.25 ,154.73,critico,Cruce C,norte,media,sin novedad
+TRA_021,2026-02-09,124.4, 34.0 ,,10.74,normal,Cruce_C,sur,alta,
+TRA_022,2026-03-01,287.28,21.73,20.7,39.54,warning,Cruce_D,oriente,HIGH,sin novedad
+TRA_023,2026-02-26,N/A,45.54,17.19,17.27,NORMAL,Cruce_C,oriente,alta,hora pico
+TRA_024,2026-02-23,"187,59",45.31,11.73,29.75,desconocido,Cruce D,sur,baja,hora pico
+TRA_025,2026-02-25,511.21,26.12,20.01,65.09,Warning,Cruce_B,sur,alta,sin novedad
+TRA_026,2026-02-16,348.88,24.62,28.44,47.74,,Cruce_A,norte,media,sin novedad
+TRA_027,2026-02-17,129.61,48.12, 12.34 ,10.39,normal,Cruce_D,poniente,baja,sin novedad
+TRA_028,2026-02-12,604.26,, 46.94 ,102.74,Critical,Cruce B,centro,low,sin novedad
+,2026-02-27,143.12, 44.29 ,15.3,13.36,Normal,Cruce_C,centro,baja,obra cercana
+TRA_030,2026-02-24,487.82,23.61,24.0,NA,warning,Cruce B,poniente,low,hora pico
+TRA_031,2026-03-02,193.63,44.54,11.06,15.24,Normal,Cruce_D,norte,alta,hora pico
+TRA_032,2026-02-07,393.12,25.01,30.39,sin_dato,Warning,Cruce_A,sur,low,obra cercana
+TRA_033,2026-02-28,783.64,5.47,47.68,125.75,critical,Cruce_C,sur,media,sin novedad
+TRA_034,2026-02-06,708.05,5.13,sin_dato,144.14,critico,Cruce B,oriente,low,hora pico
+TRA_035,2026-02-09,,,NA,,NORMAL,Cruce_B,centro,low,obra cercana
+TRA_036,2026-02-12,382.17,30.73,34.09,71.52,warning,Cruce_D,centro,media,sin novedad
+TRA_037,2026-02-28,695.54,6.94,47.53,,critico,Cruce_C,poniente,HIGH,
+TRA_038,2026-02-24, 280.98 ,28.99, 37.92 ,74.65,warning,Cruce_D,norte,low,hora pico
+TRA_039,2026-02-21,509.36,31.11,37.83,72.4,warn,Cruce_C,oriente,HIGH,
+TRA_040,2026-02-22,576.97, 17.52 ,49.77,144.03,critical,cruce_d,centro,HIGH,
+TRA_041,2026-02-17,122.7,42.65, 12.68 ,,NORMAL,cruce_d,norte,alta,lluvia
+TRA_042,2026-02-16,sin_dato,46.22,9.87,28.06,normal,Cruce_C,centro,baja,hora pico
+TRA_043,2026-02-14,"140,28",28.29,16.64,14.58,,Cruce B,poniente,baja,sin novedad
+TRA_044,2026-02-08,850.65,12.71, 50.69 ,,critico,Cruce_A,centro,alta,hora pico
+TRA_045,2026-03-01,527.68,6.29,67.0,70.31,Critical,Cruce_B,oriente,HIGH,sin novedad
+TRA_046,2026-02-07,440.06,18.31,25.6,49.14,,Cruce_D,sur,low,
+TRA_047,2026-02-26,385.13,14.92,21.04,60.95,Warning,Cruce_A,norte,HIGH,obra cercana
+TRA_048,2026-02-25,306.79,28.23, 16.46 ,23.88,Normal,Cruce_C,poniente,low,obra cercana
+TRA_049,2026-02-24,398.22,15.56,19.19,59.48,Warning,Cruce_C,oriente,low,
+TRA_050,2026-02-22,144.49,N/A,9.39,,,Cruce C,oriente,baja,
+TRA_051,2026-02-18,499.28,26.74,18.31,52.25,warning,Cruce_D,norte,HIGH,lluvia
+TRA_052,,582.32,10.49, 69.02 ,121.99,critico,Cruce_D,poniente,low,sin novedad
+TRA_053,2026-02-07,360.69,15.49, 35.43 ,42.58,Warning,Cruce_D,centro,HIGH,hora pico
+TRA_054,,358.12, 20.15 ,29.62,55.2,warn,Cruce_A,poniente,alta,hora pico
+TRA_055,2026-02-13,236.07,42.04,12.05,12.0,Normal,Cruce_D,centro,low,hora pico
+TRA_056,2026-02-17, 243.75 ,33.16,18.9,28.49,normal,Cruce_B,sur,baja,obra cercana
+TRA_057,,342.28,18.22,18.43,70.6,warning,Cruce_A,centro,baja,sin novedad
+TRA_058,2026-02-17,error_sensor,27.23,NA, 46.46 ,Warning,Cruce_A,centro,low,hora pico
+TRA_059,2026-02-12,251.62,38.28,,21.81,normal,Cruce_C,sur,alta,sin novedad
+TRA_060,2026-02-22,303.93,38.39,8.97,17.39,NORMAL,Cruce_D,poniente,low,lluvia
+TRA_061,2026-02-20,254.16,36.17,11.72,13.64,normal,Cruce_A,oriente,baja,hora pico
+TRA_062,2026-02-24,,30.13, 10.28 ,30.21,normal,cruce_a,norte,baja,lluvia
+TRA_063,2026-02-15,318.13,40.09,"17,47",17.02,Normal,Cruce_A,sur,HIGH,hora pico
+TRA_064,2026-02-18,822.86,11.73,55.99,143.4,critical,Cruce_B,oriente,media,hora pico
+TRA_065,2026-02-26,N/A,17.92,34.62,60.5,warning,Cruce_C,sur,baja,obra cercana
+TRA_066,2026-03-02,161.8,28.6,18.76,24.41,normal,Cruce_B,poniente,alta,obra cercana
+TRA_067,2026-02-27, 590.55 , 6.34 , 43.6 ,104.2,Critical,Cruce_A,sur,HIGH,lluvia
+TRA_068,2026-02-06,,,9.96, 19.1 ,normal,Cruce_A,sur,HIGH,sin novedad
+TRA_069,2026-02-12,661.69,13.33,59.33, 98.0 ,critical,Cruce_A,oriente,baja,lluvia
+TRA_070,2026-02-18,299.14, 30.37 ,36.16,62.35,warn,Cruce_D,norte,low,sin novedad
+TRA_071,2026-02-19, 709.43 ,"10,83",50.97,104.24,critico,Cruce_B,poniente,baja,hora pico
+TRA_072,2026-02-11,,17.88,24.1,49.35,,cruce_d,poniente,alta,obra cercana
+TRA_073,,456.34,28.27,31.09, 54.72 ,warning,Cruce_D,centro,HIGH,
+TRA_074,2026-02-22,283.99,49.48,12.24,17.68,normal,Cruce_D,centro,HIGH,hora pico
+TRA_075,2026-02-19,891.56, 6.87 ,66.42,108.17,critico,Cruce_D,centro,HIGH,obra cercana
+TRA_076,2026-03-01,211.63,44.56, 16.61 ,26.98,NORMAL,Cruce_A,oriente,HIGH,
+TRA_077,2026-02-21,309.26,37.35,16.13,26.68,Normal,Cruce_D,norte,baja,obra cercana
+TRA_078,2026-02-19,649.66,8.2,35.25,113.93,Critical,Cruce_B,sur,baja,obra cercana
+TRA_079,2026-02-07, 751.01 ,11.59,50.08, 127.21 ,critico,Cruce_D,poniente,alta,lluvia
+TRA_080,2026-02-11,458.09,,37.9,51.03,warning,Cruce_A,oriente,HIGH,obra cercana
+TRA_081,2026-02-20,573.27,15.25, 58.69 ,84.6,Critical,Cruce_A,poniente,alta,lluvia
+TRA_082,2026-02-23,303.3,28.02, 19.33 ,32.31,NORMAL,Cruce_A,centro,HIGH,obra cercana
+TRA_083,2026-02-22,205.74,47.82,8.26,15.58,normal,Cruce_D,oriente,low,
+TRA_084,2026-02-08,259.54,42.54,16.6,24.31,normal,Cruce_D,norte,media,hora pico
+TRA_085,,204.03,34.24,9.92,sin_dato,NORMAL,Cruce_D,poniente,low,
+TRA_086,2026-02-22,629.57, 12.46 ,45.4,127.62,Critical,Cruce_B,poniente,low,hora pico
+TRA_087,2026-02-16,275.78,29.19, 16.33 ,19.9,normal,Cruce_A,norte,alta,hora pico
+TRA_088,2026-02-21,184.28,39.99,14.38,28.02,Normal,Cruce_A,oriente,HIGH,lluvia
+TRA_089,2026-02-24,306.96,sin_dato,17.68,27.7,normal,Cruce_A,poniente,HIGH,hora pico
+TRA_090,2026-03-02, 883.74 ,12.19,61.61,82.09,critico,Cruce_B,centro,HIGH,lluvia
+TRA_091,2026-02-26,216.91,47.08,17.29,25.34,normal,Cruce_A,centro,HIGH,obra cercana
+TRA_092,2026-02-23,269.94,41.41,12.12,18.93,normal,Cruce_D,sur,alta,lluvia
+TRA_093,,368.62,,32.8,37.17,warn,Cruce_A,oriente,HIGH,
+TRA_094,2026-02-15,478.68,28.19,22.27,37.3,warning,Cruce_D,poniente,media,
+TRA_095,2026-02-20,238.5,36.34,14.19,25.91,NORMAL,Cruce_C,sur,alta,
+TRA_096,2026-02-09,388.37,19.93,30.72,46.66,warning,Cruce_B,sur,low,sin novedad
+TRA_097,2026-02-12,439.49,,29.2,67.98,Warning,Cruce_A,sur,low,lluvia
+TRA_098,2026-02-16,446.75,24.47,30.28,,warning,Cruce_A,sur,media,hora pico
+TRA_099,2026-02-06,401.11, 16.91 ,34.1,67.45,warning,Cruce_D,norte,media,hora pico
+TRA_100,2026-03-02,822.49,11.63,54.48,158.39,Critical,Cruce_D,oriente,alta,obra cercana
+TRA_101,2026-02-15,313.53,31.81,29.2,NA,warning,Cruce_D,centro,low,lluvia
+TRA_102,2026-02-14, 502.52 ,NA,28.8,,warn,Cruce_B,poniente,alta,obra cercana
+TRA_103,2026-02-23,"227,89",39.32,19.87,21.72,Normal,Cruce_D,centro,alta,sin novedad
+TRA_104,2026-02-07,355.42,19.94,"22,27", 59.04 ,Warning,Cruce_C,oriente,media,
+TRA_105,2026-02-27, 609.97 ,15.5,61.81,107.72,critico,Cruce_D,norte,alta,
+TRA_106,2026-02-15,N/A, 18.95 ,36.19,68.05,warning,Cruce_B,centro,media,lluvia
+TRA_107,,127.4,48.95,13.37,21.3,normal,Cruce_B,sur,HIGH,obra cercana
+TRA_108,,428.6,16.37,27.88,48.12,warning,Cruce_D,oriente,alta,hora pico
+TRA_109,2026-02-15,196.46,41.68,17.04,30.62,NORMAL,Cruce_C,norte,media,obra cercana
+TRA_DUP_110,2026-02-11,288.0,16.17, 23.04 ,sin_dato,warning,cruce_c,sur,baja,
+TRA_DUP_110,,192.72,47.38,15.88,13.66,normal,Cruce_B,norte,low,sin novedad
+TRA_112,2026-02-10,217.52,32.31,19.34,27.63,normal,Cruce_A,centro,low,obra cercana
+TRA_113,,487.51, 26.33 ,33.54,36.39,Warning,Cruce_A,oriente,low,lluvia
+TRA_114,,259.59,sin_dato,"16,7",19.59,normal,Cruce_C,norte,HIGH,lluvia
+TRA_115,2026-02-05,430.82,21.64,27.55,41.58,warning,cruce_c,oriente,low,hora pico
+TRA_116,2026-02-25,445.63,21.01,36.91,,warn,Cruce_D,sur,alta,
+TRA_117,2026-03-01,594.35,12.15, 56.59 ,171.54,critico,Cruce_A,centro,HIGH,
+TRA_118,2026-02-05,895.57,9.73,46.73, 129.8 ,critical,Cruce_A,oriente,baja,
+TRA_119,2026-02-18,269.17,30.54,10.6,,NORMAL,Cruce_A,poniente,media,hora pico
+TRA_120,2026-03-02, 657.81 , 12.37 ,65.11,138.04,critical,Cruce_C,centro,alta,obra cercana
+TRA_121,2026-03-02,740.96,9.97,37.45,sin_dato,critico,Cruce_D,sur,alta,sin novedad
+TRA_122,2026-02-16,257.43,48.22,10.48,21.09,Normal,Cruce D,centro,media,hora pico
+TRA_123,2026-02-05,384.32,"14,48", 33.59 , 53.83 ,warning,Cruce_A,norte,alta,lluvia
+TRA_124,2026-03-02,124.46,,16.05,26.35,Normal,Cruce_C,norte,low,
+TRA_125,,419.07,28.72,24.01,"48,05",warn,Cruce_B,oriente,low,
+TRA_126,2026-02-14,424.69,"21,17",sin_dato,42.97,warning,Cruce_B,sur,baja,lluvia
+TRA_127,2026-02-05,838.87, 5.85 ,40.59, 169.32 ,Critical,Cruce_C,poniente,baja,obra cercana
+TRA_128,2026-02-05,"193,59",38.82, 12.38 ,12.32,Normal,Cruce_C,poniente,baja,hora pico
+TRA_129,2026-02-19,526.64,14.99, 65.44 , 70.17 ,,Cruce_B,oriente,alta,sin novedad
+TRA_130,2026-02-28,497.22,29.66,22.5,51.41,warning,Cruce_A,oriente,baja,lluvia
+TRA_131,2026-02-12,657.19,16.49,50.29, 179.98 ,Critical,Cruce_D,norte,HIGH,sin novedad
+TRA_132,2026-02-26,550.63,8.25,52.71,150.04,critical,cruce_c,poniente,HIGH,sin novedad
+TRA_133,2026-02-22,831.0,11.31,54.52,93.09,critical,Cruce_B,poniente,HIGH,lluvia
+TRA_134,2026-02-05,823.53,17.92,69.63,94.96,Critical,Cruce_B,poniente,low,obra cercana
+TRA_135,2026-03-01,481.24,25.48,28.46,45.47,warn,Cruce_A,norte,HIGH,lluvia
+TRA_136,,778.01,17.7,58.52,99.03,critical,Cruce_D,centro,low,sin novedad
+TRA_137,2026-02-17,,41.12,19.03,15.98,Normal,Cruce_B,oriente,low,sin novedad
+TRA_138,2026-02-05, 198.14 ,30.91,13.01,17.72,normal,Cruce_A,oriente,low,hora pico
+TRA_139,2026-02-20,248.28,40.1,14.93,15.52,normal,Cruce_A,poniente,HIGH,sin novedad
+TRA_140,2026-02-10,147.07,37.13,10.61, 33.08 ,normal,cruce_b,sur,baja,sin novedad
+TRA_141,2026-02-13,389.26,30.27,N/A, 63.13 ,warn,Cruce_C,sur,HIGH,sin novedad
+TRA_142,2026-02-10,133.67,40.29,sin_dato,26.62,NORMAL,Cruce_A,oriente,media,lluvia
+TRA_143,2026-03-02,427.58,29.44,36.91,34.3,Warning,Cruce_D,sur,low,hora pico
+TRA_144,2026-02-15,795.01,11.96,56.43,160.82,Critical,Cruce_B,norte,HIGH,lluvia
+TRA_145,2026-02-22,,16.2,50.52,166.36,critico,Cruce_C,norte,baja,hora pico
+TRA_146,2026-02-08,316.75, 30.34 ,"13,27",27.15,NORMAL,Cruce_B,sur,media,obra cercana
+TRA_147,2026-02-16,306.67,32.54,8.41,25.59,normal,Cruce_C,poniente,alta,hora pico
+TRA_148,2026-02-09,"181,37",48.75,19.37,32.19,NORMAL,Cruce_C,oriente,alta,
+TRA_149,2026-02-23,183.1,39.2, 14.62 ,NA,Normal,Cruce_A,norte,baja,
+TRA_150,, 422.84 ,N/A,sin_dato,52.21,warning,Cruce_A,oriente,HIGH,obra cercana
+TRA_151,2026-02-15,221.31,,12.36,20.57,NORMAL,Cruce_C,oriente,low,
+TRA_152,2026-03-01, 227.25 ,47.01,19.21,23.36,NORMAL,Cruce_B,norte,HIGH,obra cercana
+TRA_153,2026-02-17,516.3,25.03, 25.74 ,N/A,Warning,cruce_c,poniente,alta,lluvia
+TRA_154,2026-02-08,423.14,14.5,36.16,42.76,Warning,Cruce_C,oriente,media,
+TRA_155,2026-02-23,421.77,26.11,21.0,60.0,warning,Cruce_B,centro,alta,
+TRA_156,2026-02-11,121.94,41.58,,15.69,normal,Cruce_D,centro,alta,obra cercana
+TRA_157,2026-02-27,661.19,17.68, 41.67 ,155.44,Critical,Cruce_A,centro,media,
+TRA_158,2026-02-27,248.3,NA,11.74, 23.62 ,Normal,Cruce_D,centro,alta,lluvia
+TRA_159,2026-02-23, 527.82 ,8.34,52.44,109.78,,Cruce_D,sur,baja,hora pico
+TRA_160,2026-02-24,"203,96",30.8, 16.73 ,20.91,Normal,Cruce_C,centro,HIGH,
+TRA_161,2026-02-06, 295.0 ,-3,12.43,26.75,NORMAL,cruce_c,norte,baja,obra cercana
+TRA_162,2026-02-16,"568,52", 14.37 ,35.51,116.7,critico,Cruce_B,poniente,low,
+TRA_163,2026-02-14,769.27,9.28,67.56,80.85,critical,Cruce_C,poniente,media,hora pico
+TRA_164,2026-02-27,187.82,N/A,10.38, 31.27 ,normal,Cruce_A,poniente,low,obra cercana
+TRA_165,2026-02-14, 170.48 , 46.48 ,10.64,14.33,Normal,Cruce_B,norte,media,sin novedad
+TRA_166,2026-02-25, 417.85 ,26.5,34.7, 60.16 ,warn,Cruce_B,centro,media,
+TRA_167,2026-02-20,399.94,24.64,,sin_dato,warn,cruce_d,poniente,low,hora pico
+TRA_168,2026-02-11,436.64, 18.94 ,29.49, 46.69 ,warn,Cruce_D,oriente,media,lluvia
+,2026-02-24,554.49,10.69,61.35,137.46,critico,Cruce_A,centro,media,hora pico
+TRA_170,,216.21,44.93,sin_dato,10.04,NORMAL,Cruce_C,poniente,alta,
+TRA_171,2026-02-08,824.31,NA,sin_dato,150.2,Critical,Cruce_C,centro,media,
+TRA_172,2026-02-13,136.25,29.01,17.63,34.07,NORMAL,Cruce_A,oriente,media,obra cercana
+TRA_173,2026-02-11, 373.98 ,17.81,26.37,73.29,warning,Cruce_C,centro,HIGH,hora pico
+TRA_174,2026-02-24,173.18,30.81,,24.9,NORMAL,cruce_b,oriente,media,lluvia
+TRA_175,2026-02-11,250.26,33.02,13.55,33.29,Normal,Cruce_B,norte,alta,obra cercana
+TRA_176,2026-02-21,320.39,"30,55",37.02, 70.58 ,Warning,Cruce_B,sur,baja,hora pico
+TRA_177,2026-02-27,533.86,N/A,56.18,142.54,critical,Cruce_B,norte,media,hora pico
+TRA_178,, 500.89 ,27.94,19.37,64.82,warn,Cruce_D,norte,baja,hora pico
+TRA_179,2026-02-17,652.98,"7,97",35.01,77.48,critico,Cruce_C,centro,baja,sin novedad
+TRA_180,2026-02-23,745.51,7.46,59.7, 139.94 ,critical,Cruce_A,poniente,low,
+TRA_181,2026-02-16,563.14,5.83,56.51,160.67,critical,Cruce_C,norte,baja,sin novedad
+TRA_182,2026-02-27,342.09,26.79,22.35,38.99,,Cruce C,centro,low,lluvia
+TRA_183,2026-03-01, 417.44 ,,18.49,59.87,Warning,Cruce_A,norte,baja,
+TRA_184,,"298,98", 35.91 ,16.04,22.44,normal,Cruce_D,centro,baja,lluvia
+TRA_185,,,N/A,13.48,33.23,NORMAL,Cruce_D,oriente,baja,obra cercana
+TRA_186,,542.98,13.47, 45.56 ,134.91,Critical,Cruce_A,oriente,HIGH,sin novedad
+TRA_187,2026-02-28,897.84,10.93,69.2, 96.35 ,critico,Cruce A,centro,baja,
+TRA_188,,370.44, 14.25 ,21.12,35.77,warning,Cruce_C,norte,media,sin novedad
+TRA_189,2026-02-18,150.62,32.89,15.75,27.9,Normal,Cruce_C,centro,HIGH,hora pico
+TRA_190,2026-02-09,458.75,, 28.21 ,46.49,warning,Cruce_D,centro,alta,
+TRA_191,2026-02-10,161.29,41.34,12.45, 17.03 ,NORMAL,Cruce_A,norte,HIGH,obra cercana
+TRA_192,2026-02-25,421.51,"16,13",25.94,sin_dato,warn,Cruce_C,centro,low,hora pico
+TRA_193,2026-02-10,140.33,36.85,9.33, 11.66 ,Normal,Cruce_B,norte,alta,hora pico
+TRA_194,2026-02-13,,46.78, 11.44 ,29.44,Normal,Cruce_D,oriente,HIGH,lluvia
+TRA_195,2026-02-05, 453.9 ,22.25,23.56,73.95,warning,Cruce_A,norte,baja,hora pico
+TRA_196,2026-02-21,438.16,15.11, 28.78 , 57.76 ,warn,Cruce_B,poniente,low,sin novedad
+TRA_197,2026-02-07,703.17,16.71,"68,32",153.13,Critical,Cruce_B,norte,baja,hora pico
+TRA_198,2026-02-15,280.34,21.65,24.63,71.17,warning,Cruce_D,centro,alta,lluvia
+TRA_199,2026-02-25,"145,12",35.95,17.47,34.24,NORMAL,Cruce_A,norte,media,lluvia
+TRA_200,,141.33,46.88, 17.26 ,N/A,NORMAL,Cruce_D,sur,HIGH,

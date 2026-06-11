@@ -1,0 +1,206 @@
+[
+    {
+        "metrics": {
+            "n_hidden": 8,
+            "lr": 0.003,
+            "val_acc": 0.76,
+            "val_loss": 0.5468881524038269,
+            "confusion_matrix": [
+                [
+                    12,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    4,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6,
+                    3
+                ]
+            ]
+        },
+        "filename": "modelo-000.npz",
+        "experiment": {
+            "n_hidden": 8,
+            "lr": 0.003,
+            "epochs": 600,
+            "seed": 892
+        },
+        "curve_name_loss_image": "./Exports/modelo-000-loss_curve.png",
+        "curve_name_accuracy_image": "./Exports/modelo-000-accuracy_curve.png",
+        "predicted_label": "normal",
+        "real_label": "normal",
+        "probabilities": [
+            0.0098,
+            0.0557,
+            0.9076,
+            0.027
+        ]
+    },
+    {
+        "metrics": {
+            "n_hidden": 8,
+            "lr": 0.03,
+            "val_acc": 1.0,
+            "val_loss": 0.09020630646227427,
+            "confusion_matrix": [
+                [
+                    12,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    4,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    9
+                ]
+            ]
+        },
+        "filename": "modelo-001.npz",
+        "experiment": {
+            "n_hidden": 8,
+            "lr": 0.03,
+            "epochs": 600,
+            "seed": 892
+        },
+        "curve_name_loss_image": "./Exports/modelo-001-loss_curve.png",
+        "curve_name_accuracy_image": "./Exports/modelo-001-accuracy_curve.png",
+        "predicted_label": "normal",
+        "real_label": "normal",
+        "probabilities": [
+            0.0001,
+            0.0064,
+            0.9897,
+            0.0038
+        ]
+    },
+    {
+        "metrics": {
+            "n_hidden": 8,
+            "lr": 0.3,
+            "val_acc": 1.0,
+            "val_loss": 0.012064618009113409,
+            "confusion_matrix": [
+                [
+                    12,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    4,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    9
+                ]
+            ]
+        },
+        "filename": "modelo-002.npz",
+        "experiment": {
+            "n_hidden": 8,
+            "lr": 0.3,
+            "epochs": 600,
+            "seed": 892
+        },
+        "curve_name_loss_image": "./Exports/modelo-002-loss_curve.png",
+        "curve_name_accuracy_image": "./Exports/modelo-002-accuracy_curve.png",
+        "predicted_label": "normal",
+        "real_label": "normal",
+        "probabilities": [
+            0.0,
+            0.0098,
+            0.9902,
+            0.0
+        ]
+    },
+    {
+        "metrics": {
+            "n_hidden": 16,
+            "lr": 0.03,
+            "val_acc": 1.0,
+            "val_loss": 0.06080682267237565,
+            "confusion_matrix": [
+                [
+                    12,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    4,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    9
+                ]
+            ]
+        },
+        "filename": "modelo-003.npz",
+        "experiment": {
+            "n_hidden": 16,
+            "lr": 0.03,
+            "epochs": 600,
+            "seed": 892
+        },
+        "curve_name_loss_image": "./Exports/modelo-003-loss_curve.png",
+        "curve_name_accuracy_image": "./Exports/modelo-003-accuracy_curve.png",
+        "predicted_label": "normal",
+        "real_label": "normal",
+        "probabilities": [
+            0.0002,
+            0.0076,
+            0.9913,
+            0.0009
+        ]
+    }
+]
