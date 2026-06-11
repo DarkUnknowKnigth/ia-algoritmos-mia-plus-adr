@@ -1,0 +1,74 @@
+[
+    {
+        "metrics": {
+            "n_hidden": 4,
+            "lr": 0.01,
+            "val_acc": 0.5,
+            "val_loss": -0.822791672385106
+        },
+        "filename": "modelo-000.npz",
+        "experiment": {
+            "n_hidden": 4,
+            "lr": 0.01,
+            "epochs": 300,
+            "seed": 682
+        },
+        "curve_name_loss_image": "modelo-000.npz-loss_curve.png",
+        "curve_name_accuracy_image": "modelo-000.npz-accuracy_curve.png",
+        "predicted_label": "critical",
+        "probabilities": [
+            0.3487,
+            0.2008,
+            0.2117,
+            0.2388
+        ]
+    },
+    {
+        "metrics": {
+            "n_hidden": 8,
+            "lr": 0.03,
+            "val_acc": 1.0,
+            "val_loss": -0.40572024453297445
+        },
+        "filename": "modelo-001.npz",
+        "experiment": {
+            "n_hidden": 8,
+            "lr": 0.03,
+            "epochs": 200,
+            "seed": 251
+        },
+        "curve_name_loss_image": "modelo-001.npz-loss_curve.png",
+        "curve_name_accuracy_image": "modelo-001.npz-accuracy_curve.png",
+        "predicted_label": "warning",
+        "probabilities": [
+            0.0546,
+            0.129,
+            0.0931,
+            0.7233
+        ]
+    },
+    {
+        "metrics": {
+            "n_hidden": 12,
+            "lr": 0.05,
+            "val_acc": 0.75,
+            "val_loss": -0.48380079867231107
+        },
+        "filename": "modelo-002.npz",
+        "experiment": {
+            "n_hidden": 12,
+            "lr": 0.05,
+            "epochs": 100,
+            "seed": 748
+        },
+        "curve_name_loss_image": "modelo-002.npz-loss_curve.png",
+        "curve_name_accuracy_image": "modelo-002.npz-accuracy_curve.png",
+        "predicted_label": "warning",
+        "probabilities": [
+            0.0793,
+            0.2573,
+            0.1833,
+            0.4801
+        ]
+    }
+]

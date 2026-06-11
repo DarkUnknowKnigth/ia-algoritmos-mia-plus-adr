@@ -336,17 +336,18 @@ def predict_single(features, params, mean, std):
     return index_to_class[pred_idx], probs[0]
 
 # Graficas
-def plot_history(history):
+def plot_history(history, experiment_name="experiment"):
     """Visualiza las curvas de pérdida y precisión durante el entrenamiento."""
     plt.figure()
     plt.plot(history["train_loss"], label="train_loss")
     plt.plot(history["val_loss"], label="val_loss")
     plt.xlabel("Epoch")
     plt.ylabel("Cross Entropy")
-    plt.title("Evolution of loss during training")
+    plt.title("Evolution of loss during training - "+experiment_name)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("loss_curve.png", dpi=150)
+    curve_name_loss = experiment_name+"-loss_curve.png"
+    plt.savefig(curve_name_loss, dpi=150)
     plt.show()
 
     plt.figure()
@@ -354,11 +355,37 @@ def plot_history(history):
     plt.plot(history["val_acc"], label="val_acc")
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy")
-    plt.title("Evolution of accuracy during training")
+    plt.title("Evolution of accuracy during training - "+experiment_name)
     plt.legend()
     plt.tight_layout()
-    plt.savefig("accuracy_curve.png", dpi=150)
+    curve_name_accuracy = experiment_name+"-accuracy_curve.png"
+    plt.savefig(curve_name_accuracy, dpi=150)
     plt.show()
+    return curve_name_loss, curve_name_accuracy
+
+# Laboratorio de experimientos
+def run_experiment(experiment = {"n_hidden": 4, "lr":0.01, "epochs": 300, "seed": 42}, experiment_id=0, X_train_n=None, y_train=None, X_validation_n=None, y_validation=None):
+    params_trained, history = train_network(
+        X_train_n, 
+        y_train, 
+        X_validation_n, 
+        y_validation,
+        n_hidden=experiment["n_hidden"], 
+        lr=experiment["lr"], 
+        epochs=experiment["epochs"], 
+        seed=experiment["seed"]
+    )
+    y_pred_val, _ = predict(X_validation_n, params_trained)
+    metrics = {
+        "n_hidden": experiment["n_hidden"],
+        "lr": experiment["lr"],
+        "val_acc": accuracy_score(y_validation, y_pred_val),
+        "val_loss": history["val_loss"][-1]
+    }
+    print(metrics)
+    # 10. Guardado del mejor modelo y prueba de inferencia en una muestra nueva
+    name = f"modelo-{experiment_id:03d}.npz"
+    return name, metrics, params_trained , history
 
 # Programa principal
 def main():
@@ -385,107 +412,106 @@ def main():
     X_test_n = (X_test - mean) / std
 
     # 4. Pruebas rápidas de las funciones implementadas
-    Z_demo = np.array([[-2.0,0.0,3.0]])
-    print("reLU", relu(Z_demo))
-    print("reLU derivative: ", relu_derivative(Z_demo))
-    logits_demo = np.array([[2.0,1.0,0.1]])
-    print("softmax: ", softmax(logits_demo))
-    probs_demo = softmax(logits_demo)
-    print("softmax demo: ", np.round(probs_demo,4) )
-    print("sum softmax: ", probs_demo.sum(axis=1) )
+    # Z_demo = np.array([[-2.0,0.0,3.0]])
+    # print("reLU", relu(Z_demo))
+    # print("reLU derivative: ", relu_derivative(Z_demo))
+    # logits_demo = np.array([[2.0,1.0,0.1]])
+    # print("softmax: ", softmax(logits_demo))
+    # probs_demo = softmax(logits_demo)
+    # print("softmax demo: ", np.round(probs_demo,4) )
+    # print("sum softmax: ", probs_demo.sum(axis=1) )
     
     # 5. Verificación de shapes e inicialización de parámetros
-    params_demo = initialize_parameters(n_features=4, n_hidden=8, n_classes=3, seed=42)
-    for name, value in params_demo.items():
-        print(f"{name}: {value.shape}")
+    # params_demo = initialize_parameters(n_features=4, n_hidden=8, n_classes=3, seed=42)
+    # for name, value in params_demo.items():
+    #     print(f"{name}: {value.shape}")
 
-    # 6. Verificación de Gradientes (Gradient Checking)
-    num, ana, diff = numerical_gradient_check(X_train_n[:10], y_train[:10], params_demo)
-    print(f"Gradient check[0,0] -> numeric = {num:.8f}, analitic={ana:.8f}, diference={diff:.8e}")
+    # # 6. Verificación de Gradientes (Gradient Checking)
+    # num, ana, diff = numerical_gradient_check(X_train_n[:10], y_train[:10], params_demo)
+    # print(f"Gradient check[0,0] -> numeric = {num:.8f}, analitic={ana:.8f}, diference={diff:.8e}")
     
     # 7. Entrenamiento de la red neuronal
-    params_trained, history = train_network(
-        X_train_n, 
-        y_train, 
-        X_validation_n, 
-        y_validation,
-        n_hidden=8,
-        lr=0.03,
-        epochs=600, 
-        seed=42
-    )
+    # params_trained, history = train_network(
+    #     X_train_n, 
+    #     y_train, 
+    #     X_validation_n, 
+    #     y_validation,
+    #     n_hidden=8,
+    #     lr=0.03,
+    #     epochs=600, 
+    #     seed=42
+    # )
 
     # 8. Evaluación del modelo entrenado
-    y_pred_train, _ = predict(X_train_n, params_trained)
-    y_pred_val, _ = predict(X_validation_n, params_trained)
-    y_pred_test, probs_test = predict(X_test_n, params_trained)
+    # y_pred_train, _ = predict(X_train_n, params_trained)
+    # y_pred_val, _ = predict(X_validation_n, params_trained)
+    # y_pred_test, probs_test = predict(X_test_n, params_trained)
 
-    print("Final metrics------")
-    print("Train accuracy: ", accuracy_score(y_train, y_pred_train))
-    print("Validation accuracy: ", accuracy_score(y_validation, y_pred_val))
-    print("Test accuracy: ", accuracy_score(y_test, y_pred_test))
+    # print("Final metrics------")
+    # print("Train accuracy: ", accuracy_score(y_train, y_pred_train))
+    # print("Validation accuracy: ", accuracy_score(y_validation, y_pred_val))
+    # print("Test accuracy: ", accuracy_score(y_test, y_pred_test))
 
-    cm = confusion_matrix_np(y_test, y_pred_test, len(class_to_index))
-    print("Matriz de confusion test")
-    print("Rows = real class; columns = predicted class")
-    print(cm)
+    # cm = confusion_matrix_np(y_test, y_pred_test, len(class_to_index))
+    # print("Matriz de confusion test")
+    # print("Rows = real class; columns = predicted class")
+    # print(cm)
 
-    print("First predictions (test)")
-    for i in range(min(10, len(y_test))):
-        print(
-            ids[test_idx[i]],
-            "real=",index_to_class[int(y_test[i])],
-            "predicted=",index_to_class[int(y_pred_test[i])],
-            "probs=", np.round(probs_test[i],3)
-        )
-    errors = error_report([ids[i] for i in test_idx], y_test, y_pred_test, probs_test, index_to_class)
-    print("Errores detectados:", len(errors))
-    for item in errors[:5]:
-        print(item)
+    # print("First predictions (test)")
+    # for i in range(min(10, len(y_test))):
+    #     print(
+    #         ids[test_idx[i]],
+    #         "real=",index_to_class[int(y_test[i])],
+    #         "predicted=",index_to_class[int(y_pred_test[i])],
+    #         "probs=", np.round(probs_test[i],3)
+    #     )
+    # errors = error_report([ids[i] for i in test_idx], y_test, y_pred_test, probs_test, index_to_class)
+    # print("Errores detectados:", len(errors))
+    # for item in errors[:5]:
+    #     print(item)
     
     # 9. Experimentos guiados para encontrar buenos hiperparámetros
     experiments = [
-        {"n_hidden": 4, "lr":0.01},
-        {"n_hidden": 8, "lr":0.03},
-        {"n_hidden": 12, "lr":0.05},
+        {"n_hidden": 4, "lr":0.01, "epochs": 300, "seed": np.random.randint(1000)},
+        {"n_hidden": 8, "lr":0.03,"epochs": 200, "seed": np.random.randint(1000)},
+        {"n_hidden": 12, "lr":0.05,"epochs": 100, "seed": np.random.randint(1000)},
     ]
     results = []
     print("\n --- Experimentos guiados")
-    for experiment in experiments:
-        p, h = train_network(
-            X_train_n, 
-            y_train, 
-            X_validation_n, 
-            y_validation,
-            n_hidden=experiment["n_hidden"], 
-            lr=experiment["lr"], 
-            epochs=400, 
-            seed=42
-        )
-        y_pred_val, _ = predict(X_validation_n, p)
-        row = {
-            "n_hidden": experiment["n_hidden"],
-            "lr": experiment["lr"],
-            "val_acc": accuracy_score(y_validation, y_pred_val),
-            "val_loss": h["val_loss"][-1]
-        }
-        results.append(row)
-        print(row)
-    # 10. Guardado del mejor modelo y prueba de inferencia en una muestra nueva
-    save_parameters(params_trained, mean, std)
-    params_loaded, mean_loaded, std_loaded = load_parameters()
-    label, prob = predict_single([ 
-            280.3399963378906,
-            21.649999618530273,
-            24.6299991607666,
-            71.16999816894531
-    ], params_loaded, mean_loaded, std_loaded)
-    print("\n Inferencia de muestra nueva:")
-    print("Clase predicha: ", label)
-    print("Probabilidades: ", np.round(prob, 4))
+    for index,experiment in enumerate(experiments):
+        print("\nExperimento:")
+        print(experiment)
+        # Usando la funcion de correr experimentos y catalogandolos
+        experiment_name, metrics, params_trained, history = run_experiment(experiment,index, X_train_n, y_train, X_validation_n, y_validation)
+        #Guardar los nuevos experimentos con su nombre del archivo
+        save_parameters(params_trained, mean, std, filename=experiment_name)
+        #Cargar el modelo creado y predecir una muestra 
+        params_loaded, mean_loaded, std_loaded = load_parameters(experiment_name)
+        label, prob = predict_single([ 
+                280.3399963378906,
+                21.649999618530273,
+                24.6299991607666,
+                71.16999816894531
+        ], params_loaded, mean_loaded, std_loaded)
+        print("\n Inferencia de muestra nueva:")
+        print("Clase predicha: ", label)
+        print("Probabilidades: ", np.round(prob, 4))
+        # 11. Visualización de los resultados del entrenamiento
+        curve_name_loss, curve_name_accuracy = plot_history(history,experiment_name)
 
-    # 11. Visualización de los resultados del entrenamiento
-    plot_history(history)
+        results.append({
+            "metrics":metrics,
+            "filename":experiment_name, 
+            "experiment":experiment, 
+            "curve_name_loss_image":curve_name_loss, 
+            "curve_name_accuracy_image":curve_name_accuracy,
+            "predicted_label":label,
+            "probabilities":np.round(prob, 4).tolist()
+        })
+    #resumen de resultados (guardar experimentos y ubicaciones de los modelos en un json)
+    json_object = json.dumps(results, indent=4)
+    with open("results.json", "w") as outfile:
+        outfile.write(json_object)
 
 if __name__ == "__main__":
     main()
