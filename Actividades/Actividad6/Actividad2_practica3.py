@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 # Dataset
-with open("dataset_curado.json", "r") as f:
+with open("dataset_procesado.json", "r") as f:
     dataPipeline = json.load(f)
 if dataPipeline is None:
     print("Error al cargar los datos")
@@ -425,7 +425,7 @@ def main():
     print("Validation accuracy: ", accuracy_score(y_validation, y_pred_val))
     print("Test accuracy: ", accuracy_score(y_test, y_pred_test))
 
-    cm = confusion_matrix_np(y_test, y_pred_test, n_classes=3)
+    cm = confusion_matrix_np(y_test, y_pred_test, len(class_to_index))
     print("Matriz de confusion test")
     print("Rows = real class; columns = predicted class")
     print(cm)
@@ -474,7 +474,12 @@ def main():
     # 10. Guardado del mejor modelo y prueba de inferencia en una muestra nueva
     save_parameters(params_trained, mean, std)
     params_loaded, mean_loaded, std_loaded = load_parameters()
-    label, prob = predict_single([0.45, 1.12, 2.89, 0.2], params_loaded, mean_loaded, std_loaded)
+    label, prob = predict_single([ 
+            280.3399963378906,
+            21.649999618530273,
+            24.6299991607666,
+            71.16999816894531
+    ], params_loaded, mean_loaded, std_loaded)
     print("\n Inferencia de muestra nueva:")
     print("Clase predicha: ", label)
     print("Probabilidades: ", np.round(prob, 4))
