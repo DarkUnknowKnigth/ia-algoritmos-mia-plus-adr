@@ -1,23 +1,23 @@
 import numpy as np
 import time
+import json
 
 # --- DATOS Y PARÁMETROS INICIALES ---
 print("--- DATOS Y PARÁMETROS INICIALES ---")
-x = np.array([
-    [7,10,7,2],
-    [10,12,10,5],
-    [6,10,6,5],
-    [5,5,5,2],
-    [8,10,7,2],
-    [10,12,10,5],
-    [6,10,6,5],
-    [5,5,5,2],
-    [10,12,10,5]
-],np.float32)
-y_true = np.array([1,0,1,2,1,0,1,2,0], np.int64) 
+# Carga de datos desde archivo JSON
+with open("dataset_curado.json", "r") as f:
+    dataset = json.load(f)
 
-class_names = {0:'critical', 1:'warning', 2:'normal'}
-name_to_class = {v:k for k,v in class_names.items()}
+x = np.array(dataset["x"], dtype=np.float32)
+y_true = np.array(dataset["y"], dtype=np.int64)
+class_to_index = dataset["class_to_index"]
+# Las claves de JSON son strings, se convierten a enteros para el diccionario de índices
+index_to_class = {int(k): v for k, v in dataset["index_to_class"].items()}
+
+# Adaptación a las variables del script original
+class_names = index_to_class
+name_to_class = class_to_index
+
 # Pesos
 w1 = np.array([
     [0.2,-0.1,0.5],
