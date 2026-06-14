@@ -240,7 +240,7 @@ def cross_entropy_loss(probs, y_true):
     selected = probs[np.arange(n), y_true]
     # Calcula el logaritmo de esas probabilidades y promedia el resultado.
     # Se suma un valor muy pequeño (1e-9) para evitar calcular log(0), que es infinito.
-    return np.mean(np.log(selected + 1e-9))
+    return -np.mean(np.log(selected + 1e-9))
 
 # Retropropagacion
 def backward(y_true, params, cache):

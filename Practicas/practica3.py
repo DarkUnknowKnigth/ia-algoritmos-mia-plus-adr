@@ -290,7 +290,7 @@ def cross_entropy_lost(probabilities, y_true):
     n = len(y_true)
     selected = probabilities[np.arange(n), y_true]
     # Se suma 1e-9 (un número muy pequeño) para evitar hacer logaritmo de cero.
-    return np.mean(np.log(selected + 1e-9))
+    return -np.mean(np.log(selected + 1e-9))
 
 loss_initial = cross_entropy_lost(probs, Y_train[:5])
 print("perdida inicial: ", loss_initial)
